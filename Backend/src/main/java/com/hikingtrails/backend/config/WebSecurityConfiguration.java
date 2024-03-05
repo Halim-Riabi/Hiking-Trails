@@ -43,11 +43,12 @@ public class WebSecurityConfiguration {
 
     }
 
-   /* public BCryptPasswordEncoder bCryptPasswordEncoder() {
-        return new BCryptPasswordEncoder();
-    }*/
+
     @Bean
-    public PasswordEncoder passwordEncoder() {return new BCryptPasswordEncoder(); }
+     public BCryptPasswordEncoder bCryptPasswordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+    /*public PasswordEncoder passwordEncoder() {return new BCryptPasswordEncoder(); }*/
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
