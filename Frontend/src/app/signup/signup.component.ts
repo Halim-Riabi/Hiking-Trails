@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth/auth.service';
@@ -18,6 +18,9 @@ export class SignupComponent {
     private snackBar: MatSnackBar,
     private authService: AuthService,
     private router: Router) {
+    this.signupForm = this.fb.group({
+        email: ['', [Validators.required, this.emailValidator]]
+      });
 
   }
 
@@ -29,6 +32,16 @@ export class SignupComponent {
       confirmPassword: [null, [Validators.required]]
     })
   }
+
+  emailValidator(control: FormControl) {
+    const emailPattern = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9_.+-]+\.[a-zA-Z0-9_.+-]/;;
+    if (control.value && !emailPattern.test(control.value) && !/\./.test(control.value.split('@')[1])) {
+      return { invalidEmail: true };
+    }
+    return null;
+  }
+
+
 
   togglePasswordVisibility(){
     this.hidePassword = !this.hidePassword;
@@ -54,6 +67,7 @@ export class SignupComponent {
     )
 
   }
+
 
 
 }

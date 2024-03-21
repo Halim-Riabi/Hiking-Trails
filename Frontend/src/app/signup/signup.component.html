@@ -18,7 +18,7 @@
                     <mat-label>Email</mat-label>
                     <input matInput formControlName="email" placeholder="email" required>
 
-                    <mat-error *ngIf="signupForm.get('email').invalid && signupForm.get('email').touched">
+                    <mat-error *ngIf="signupForm.get('email').invalid && signupForm.get('email').touched && signupForm.get('email').errors?.['invalidEmail']">
                         Please enter a valid email.
                     </mat-error>
                 </mat-form-field>
