@@ -1,6 +1,7 @@
 package com.hikingtrails.backend.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.hikingtrails.backend.dto.TrailDto;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.OnDelete;
@@ -27,4 +28,15 @@ public class Trail {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private Category category;
+
+    public TrailDto getDto(){
+        TrailDto trailDto = new TrailDto();
+        trailDto.setId(id);
+        trailDto.setName(name);
+        trailDto.setPrice(price);
+        trailDto.setDescription(description);
+        trailDto.setByteImg(img);
+        trailDto.setCategoryId(category.getId());
+        return trailDto;
+    }
 }
