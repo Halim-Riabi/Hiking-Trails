@@ -30,6 +30,15 @@ export class AdminService {
     })
   }
 
+  getAllTrails(): Observable<any>{
+    return this.http.get(BASIC_URL + 'api/admin/trails',{
+      headers: this.createAuthorizationHeader(),
+    })
+  }
+
+
+
+
   private createAuthorizationHeader(): HttpHeaders{
     return new HttpHeaders().set(
       'Authorization', 'Bearer ' + UserStorageService.getToken()

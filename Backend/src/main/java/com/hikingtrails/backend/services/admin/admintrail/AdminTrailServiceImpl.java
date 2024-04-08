@@ -38,4 +38,9 @@ public class AdminTrailServiceImpl implements AdminTrailService{
         return trails.stream().map(Trail::getDto).collect(Collectors.toList());
     }
 
+    public List<TrailDto> getAllTrailByName(String name){
+        List<Trail> trails = trailRepository.findAllByNameContaining(name);
+        return trails.stream().map(Trail::getDto).collect(Collectors.toList());
+    }
+
 }

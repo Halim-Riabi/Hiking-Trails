@@ -29,4 +29,10 @@ public class AdminTrailController {
         return ResponseEntity.ok(trailDtos);
     }
 
+    @GetMapping("/search/{name}")
+    public ResponseEntity<List<TrailDto>> getAllTrailByName(@PathVariable String name){
+        List<TrailDto> trailDtos = adminTrailService.getAllTrailByName(name);
+        return ResponseEntity.ok(trailDtos);
+    }
+
 }

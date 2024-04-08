@@ -9,4 +9,6 @@ public interface AdminTrailService  {
 
     TrailDto addTrail(TrailDto trailDto) throws IOException;
     List<TrailDto> getAllTrails();
+
+    List<TrailDto> getAllTrailByName(String name);
 }

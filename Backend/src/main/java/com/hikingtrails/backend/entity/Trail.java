@@ -37,6 +37,7 @@ public class Trail {
         trailDto.setDescription(description);
         trailDto.setByteImg(img);
         trailDto.setCategoryId(category.getId());
+        trailDto.setCategoryName(category.getName());
         return trailDto;
     }
 }

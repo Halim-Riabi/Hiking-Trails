@@ -13,6 +13,7 @@ public class TrailDto {
     private String description;
     private byte[] byteImg;
     private Long categoryId;
+    private String categoryName;
     /*we want to cut the image in multipart from the frontend and we will return the image in the byte array*/
     private MultipartFile img;
 
