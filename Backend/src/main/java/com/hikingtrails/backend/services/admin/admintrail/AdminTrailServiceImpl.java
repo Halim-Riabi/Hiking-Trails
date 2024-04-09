@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -41,6 +42,15 @@ public class AdminTrailServiceImpl implements AdminTrailService{
     public List<TrailDto> getAllTrailByName(String name){
         List<Trail> trails = trailRepository.findAllByNameContaining(name);
         return trails.stream().map(Trail::getDto).collect(Collectors.toList());
+    }
+
+    public boolean deleteTrail(Long id){
+        Optional<Trail> optionalTrail = trailRepository.findById(id);
+        if(optionalTrail.isPresent()){
+            trailRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
 
 }

@@ -44,6 +44,13 @@ export class AdminService {
   }
 
 
+  deleteTrail(trailId:any): Observable<any>{
+    return this.http.delete(BASIC_URL + `api/admin/trail/${trailId}`, {
+      headers: this.createAuthorizationHeader(),
+    })
+  }
+
+
 
 
   private createAuthorizationHeader(): HttpHeaders{
@@ -51,4 +58,5 @@ export class AdminService {
       'Authorization', 'Bearer ' + UserStorageService.getToken()
     )
   }
+
 }

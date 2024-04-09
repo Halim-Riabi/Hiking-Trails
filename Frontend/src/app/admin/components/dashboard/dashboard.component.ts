@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AdminService } from '../../service/admin.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,7 +14,8 @@ export class DashboardComponent {
   searchTrailForm!: FormGroup;
 
   constructor(private adminService: AdminService,
-    private fb: FormBuilder){}
+    private fb: FormBuilder,
+    private snackbar: MatSnackBar){}
 
   ngOnInit(){
     this.getAllTrails();
@@ -29,6 +31,7 @@ export class DashboardComponent {
         element.processedImg = 'data:image/jpeg;base64,' + element.byteImg;
         this.trails.push(element);
       });
+      console.log(this.trails)
     })
   }
 
@@ -40,6 +43,23 @@ export class DashboardComponent {
         element.processedImg = 'data:image/jpeg;base64,' + element.byteImg;
         this.trails.push(element);
       });
+      console.log(this.trails)
+    })
+  }
+
+  deleteTrail(trailId:any){
+    this.adminService.deleteTrail(trailId).subscribe(res=>{
+      if(res.body == null){
+        this.snackbar.open('Trail Deleted Successfully', 'Close', {
+          duration: 5000
+        });
+        this.getAllTrails();
+      }else{
+        this.snackbar.open(res.message, 'Close', {
+          duration: 5000,
+          panelClass: 'error-snackbar'
+        });
+      }
     })
   }
 

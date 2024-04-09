@@ -11,4 +11,6 @@ public interface AdminTrailService  {
     List<TrailDto> getAllTrails();
 
     List<TrailDto> getAllTrailByName(String name);
+
+    boolean deleteTrail(Long id);
 }

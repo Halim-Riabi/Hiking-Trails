@@ -34,5 +34,13 @@ public class AdminTrailController {
         List<TrailDto> trailDtos = adminTrailService.getAllTrailByName(name);
         return ResponseEntity.ok(trailDtos);
     }
+    @DeleteMapping("/trail/{trailId}")
+    public ResponseEntity<Void> deleteTrail(@PathVariable Long trailId){
+        boolean deleted = adminTrailService.deleteTrail(trailId);
+        if(deleted){
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
+    }
 
 }
