@@ -1,4 +1,16 @@
+<form [formGroup]="searchTrailForm" class="search-form" (submit)="submitForm()">
+    <mat-form-field appearance="outline" class="search-input">
+        <mat-label>Enter Keyword to search</mat-label>
+        <input matInput formControlName="title">
+        <button mat-button matSuffix color="primary" [disabled]="searchTrailForm.invalid">
+            <mat-icon>search</mat-icon>
+        </button>
+    </mat-form-field>
+</form>
 <div class="trail-list">
+
+   
+
     <mat-card class="trail-card" *ngFor="let trail of trails">
         <div class="trail-image">
             <img [src]="trail.processedImg" alt="trail-image">
