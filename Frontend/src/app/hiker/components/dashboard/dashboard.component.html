@@ -1,1 +1,42 @@
-<p>dashboard works!</p>
+<form [formGroup]="searchTrailForm" class="search-form" (submit)="submitForm()">
+    <mat-form-field appearance="outline" class="search-input">
+        <mat-label>Enter Keyword to search</mat-label>
+        <input matInput formControlName="title">
+        <button mat-button matSuffix color="primary" [disabled]="searchTrailForm.invalid">
+            <mat-icon>search</mat-icon>
+        </button>
+    </mat-form-field>
+</form>
+<div class="trail-list">
+
+
+    <mat-card class="trail-card" *ngFor="let trail of trails">
+        <div class="trail-image">
+            <img [src]="trail.processedImg" alt="trail-image">
+        </div>
+        <div class="trail-details">
+            <h2 class="trail-name">{{ trail.name }}</h2>
+            <p class="trail-description">{{ trail.description }}</p>
+
+            <mat-divider></mat-divider>
+            <div class="trail-info">
+                <div class="info-row">
+                    <span class="info-label">Price:</span>
+                    <span class="info-value">${{ trail.price }}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Category:</span>
+                    <span class="info-value">{{ trail.categoryName }}</span>
+                </div>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="actions">
+                <!-- I removed this from the button :mat-raised-button -->
+                <button  color="primary" class="update-button" (click)="addToMyList(trail.id)">
+                    Add to my list <mat-icon>bookmark_border</mat-icon>
+                </button>
+            </div>
+        </div>
+    </mat-card>
+
+</div>
