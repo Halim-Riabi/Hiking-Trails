@@ -52,12 +52,12 @@ export class UserStorageService {
       return role == 'ADMIN';
   }
 
-  static isCustomerLoggedIn(): boolean {
+  static isHikerLoggedIn(): boolean {
     if(this.getToken === null){
       return false;
     }
     const role: string = this.getUserRole();
-    return role == 'CUSTOMER';
+    return role == 'HIKER';
   }
 
 

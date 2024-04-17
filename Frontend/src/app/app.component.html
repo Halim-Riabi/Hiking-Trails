@@ -1,5 +1,5 @@
 
-<div *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn">
+<div *ngIf="!isHikerLoggedIn && !isAdminLoggedIn">
 <mat-toolbar class="primary" class="navbar">
 
   <span class="navbar-brand">Hiking Trails</span>
@@ -29,7 +29,7 @@
 </div>
 
 
-<div *ngIf="isCustomerLoggedIn">
+<div *ngIf="isHikerLoggedIn">
 <mat-toolbar class="primary" class="navbar">
 
   <span class="navbar-brand">Hiking Trails</span>

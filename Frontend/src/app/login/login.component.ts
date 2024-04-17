@@ -44,8 +44,8 @@ export class LoginComponent {
           // redirect the user to it's dashboard by checking the role of the user
           if(UserStorageService.isAdminLoggedIn()){
             this.router.navigateByUrl('admin/dashboard');
-          }else if (UserStorageService.isCustomerLoggedIn()){
-            this.router.navigateByUrl('customer/dashboard');
+          }else if (UserStorageService.isHikerLoggedIn()){
+            this.router.navigateByUrl('hiker/dashboard');
           }
       },
       (error) =>{
