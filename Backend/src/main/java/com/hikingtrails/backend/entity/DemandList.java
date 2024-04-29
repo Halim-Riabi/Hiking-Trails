@@ -1,5 +1,6 @@
 package com.hikingtrails.backend.entity;
 
+import com.hikingtrails.backend.dto.DemandListDto;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.OnDelete;
@@ -27,4 +28,17 @@ public class DemandList {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "book_id")
     private Book book;
+
+    public DemandListDto getDemandDto(){
+        DemandListDto demandListDto = new DemandListDto();
+        demandListDto.setId(id);
+        demandListDto.setPrice(price);
+        demandListDto.setTrailId(trail.getId());
+        demandListDto.setQuantity(quantity);
+        demandListDto.setUserId(user.getId());
+        demandListDto.setTrailName(trail.getName());
+        demandListDto.setReturnedImg(trail.getImg());
+
+        return demandListDto;
+    }
 }

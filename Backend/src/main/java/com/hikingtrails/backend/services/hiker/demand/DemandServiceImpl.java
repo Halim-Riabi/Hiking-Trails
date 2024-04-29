@@ -1,6 +1,8 @@
 package com.hikingtrails.backend.services.hiker.demand;
 
 import com.hikingtrails.backend.dto.AddTrailInDemandDto;
+import com.hikingtrails.backend.dto.BookDto;
+import com.hikingtrails.backend.dto.DemandListDto;
 import com.hikingtrails.backend.entity.Book;
 import com.hikingtrails.backend.entity.DemandList;
 import com.hikingtrails.backend.entity.Trail;
@@ -15,7 +17,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class DemandServiceImpl implements DemandService{
@@ -48,6 +52,7 @@ public class DemandServiceImpl implements DemandService{
                 demand.setTrail(optionalTrail.get());
                 demand.setPrice(optionalTrail.get().getPrice());
                 demand.setQuantity(1L);
+                demand.setNbParticipants(1L);
                 demand.setUser(optionalUser.get());
                 demand.setBook(activeBook);
 
@@ -58,13 +63,25 @@ public class DemandServiceImpl implements DemandService{
                 activeBook.getDemandList().add(demand);
                 bookRepository.save(activeBook);
 
-                return ResponseEntity.status(HttpStatus.CREATED).body(demand);
+                return ResponseEntity.status(HttpStatus.CREATED).body(demand.getId());
 
             }else{
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User or trail not found");
             }
         }
 
+    }
+    public BookDto getDemandByUserId(Long userId){
+        Book activeBook = bookRepository.findByUserIdAndBookStatus(userId, BookStatus.Pending);
+        List<DemandListDto> demandListDtoList = activeBook.getDemandList().stream().map(DemandList::getDemandDto).collect(Collectors.toList());
+        BookDto bookDto = new BookDto();
+        bookDto.setAmount(activeBook.getAmount());
+        bookDto.setId(activeBook.getId());
+        bookDto.setBookStatus(activeBook.getBookStatus());
+        bookDto.setDiscount(activeBook.getDiscount());
+        bookDto.setTotalAmount(activeBook.getTotalAmount());
+        bookDto.setDemandList(demandListDtoList);
+        return bookDto;
     }
 
 }

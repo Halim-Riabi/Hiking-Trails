@@ -26,6 +26,17 @@ export class HikerService {
     })
   }
 
+  addToDemand(trailId:any): Observable<any>{
+    const demandDto = {
+      trailId : trailId,
+      userId : UserStorageService.getUserId()
+    }
+
+    return this.http.post(BASIC_URL + `api/hiker/demand`, demandDto, {
+      headers: this.createAuthorizationHeader(),
+    })
+  }
+
   private createAuthorizationHeader(): HttpHeaders{
     return new HttpHeaders().set(
       'Authorization', 'Bearer ' + UserStorageService.getToken()
