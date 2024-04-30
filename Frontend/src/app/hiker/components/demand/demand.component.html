@@ -1,0 +1,46 @@
+<div *ngIf="demandList.length > 0; else emptyDemand">
+    <div class="demand-container">
+        <div class="demand-list" *ngFor="let item of demandList">
+            <div class="trail-info">
+                <div class="trail-image">
+                    <img [src]="item.processedImg" alt="trail-image">
+                </div>
+                <div class="trail-details">
+                    <div class="item-row">
+                        <div class="item-name" [ngClass]="{ 'highlight': item.highlighted }">
+                                {{ item.trailName }}
+                        </div>
+                        <div class="item-price">{{ item.price | currency }}</div>
+                        <div class="nb_participants-controls">
+                            <button mat-icon-button [disabled]="item.nb_participants == 1">
+                                <mat-icon>remove_circle_outline</mat-icon>
+                            </button>
+                            <span class="nb_participants">{{ item.nb_participants }}</span>
+                            <button mat-icon-button >
+                                <mat-icon>add_circle_outline</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="total-price">
+            Total Amount : {{ book.totalAmount | currency }}
+        </div>
+        <div class="total-price">
+            Amount : {{ book.amount | currency }}
+        </div>
+        <div>
+            <button mat-raised-button color="primary">Place the Book</button>
+        </div>
+    </div>
+</div>
+
+<ng-template #emptyDemand>
+    <div class="empty-demand">
+        <mat-icon class="icon">remove_demand_list</mat-icon>
+        <span>Nothing to see here.</span>
+    </div>
+
+</ng-template>

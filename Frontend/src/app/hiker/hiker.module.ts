@@ -7,12 +7,14 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DemoAngularMaterailModule } from '../DemoAngularMaterialModule';
+import { DemandComponent } from './components/demand/demand.component';
 
 
 @NgModule({
   declarations: [
     HikerComponent,
-    DashboardComponent
+    DashboardComponent,
+    DemandComponent
   ],
   imports: [
     CommonModule,

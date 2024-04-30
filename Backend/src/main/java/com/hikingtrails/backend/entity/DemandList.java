@@ -35,6 +35,7 @@ public class DemandList {
         demandListDto.setPrice(price);
         demandListDto.setTrailId(trail.getId());
         demandListDto.setQuantity(quantity);
+        demandListDto.setNbParticipants(nbParticipants);
         demandListDto.setUserId(user.getId());
         demandListDto.setTrailName(trail.getName());
         demandListDto.setReturnedImg(trail.getImg());
