@@ -1,5 +1,6 @@
 package com.hikingtrails.backend.entity;
 
+import com.hikingtrails.backend.dto.BookDto;
 import com.hikingtrails.backend.enums.BookStatus;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -34,5 +35,20 @@ public class Book {
     //down here the user can book many Trails, by changing the annotation to OneToOne he will only book one Trail
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "book")
     private List<DemandList> demandList;
+
+    public BookDto getBookDto(){
+        BookDto bookDto = new BookDto();
+
+        bookDto.setId(id);
+        bookDto.setBookDescription(bookDescription);
+        bookDto.setAddress(address);
+        bookDto.setTrackingId(trackingId);
+        bookDto.setAmount(amount);
+        bookDto.setDate(date);
+        bookDto.setBookStatus(bookStatus);
+        bookDto.setUserName(user.getName());
+        return bookDto;
+
+    }
 
 }
