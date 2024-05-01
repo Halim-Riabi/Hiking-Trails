@@ -84,4 +84,28 @@ public class DemandServiceImpl implements DemandService{
         return bookDto;
     }
 
+    public BookDto increaseTrailNbparticipants(AddTrailInDemandDto addTrailInDemandDto){
+
+        Book activeBook = bookRepository.findByUserIdAndBookStatus(addTrailInDemandDto.getUserId(), BookStatus.Pending);
+        Optional<Trail> optionalTrail = trailRepository.findById(addTrailInDemandDto.getTrailId());
+
+        Optional<DemandList> optionalDemandList = demandListRepository.findByTrailIdAndBookIdAndUserId(
+                addTrailInDemandDto.getTrailId(), activeBook.getId(), addTrailInDemandDto.getUserId()
+        );
+        if(optionalTrail.isPresent() && optionalDemandList.isPresent()){
+            DemandList demandList = optionalDemandList.get();
+            Trail trail = optionalTrail.get();
+
+            activeBook.setAmount(activeBook.getAmount() + trail.getPrice() );
+            activeBook.setTotalAmount(activeBook.getTotalAmount() + trail.getPrice());
+
+            demandList.setNbParticipants(demandList.getNbParticipants() + 1);
+
+            demandListRepository.save(demandList);
+            bookRepository.save(activeBook);
+            return activeBook.getBookDto();
+        }
+        return null;
+    }
+
 }

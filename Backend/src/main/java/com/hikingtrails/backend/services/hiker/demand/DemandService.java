@@ -8,4 +8,5 @@ public interface DemandService {
 
     ResponseEntity<?> addTrailToDemand(AddTrailInDemandDto addTrailInDemandDto);
     BookDto getDemandByUserId(Long userId);
+    BookDto increaseTrailNbparticipants(AddTrailInDemandDto addTrailInDemandDto);
 }

@@ -24,4 +24,9 @@ public class DemandController {
         BookDto bookDto = demandService.getDemandByUserId(userId);
         return ResponseEntity.status(HttpStatus.OK).body(bookDto);
     }
+
+    @PostMapping("/addition")
+    public ResponseEntity<BookDto> increaseTrailNbparticipants(@RequestBody AddTrailInDemandDto addTrailInDemandDto){
+        return ResponseEntity.status(HttpStatus.CREATED).body(demandService.increaseTrailNbparticipants(addTrailInDemandDto));
+    }
 }
