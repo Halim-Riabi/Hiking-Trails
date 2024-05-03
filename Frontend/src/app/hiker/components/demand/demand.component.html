@@ -12,7 +12,7 @@
                         </div>
                         <div class="item-price">{{ item.price | currency }}</div>
                         <div class="nb_participants-controls">
-                            <button mat-icon-button [disabled]="item.nbParticipants == 1">
+                            <button mat-icon-button [disabled]="item.nbParticipants == 1" (click)="decreaseNbparticipants(item.trailId)">
                                 <mat-icon>remove_circle_outline</mat-icon>
                             </button>
                             <span class="nb_participants"> Number of participants: {{ item.nbParticipants }}</span>

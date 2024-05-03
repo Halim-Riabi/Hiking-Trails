@@ -48,6 +48,17 @@ export class HikerService {
     })
   }
 
+  decreaseTrailNbparticipants(trailId:any): Observable<any>{
+    const demandDto = {
+      trailId : trailId,
+      userId : UserStorageService.getUserId()
+    }
+
+    return this.http.post(BASIC_URL + `api/hiker/deduction`, demandDto, {
+      headers: this.createAuthorizationHeader(),
+    })
+  }
+
 
 
   getDemandByUserId(): Observable<any>{

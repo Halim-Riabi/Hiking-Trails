@@ -43,4 +43,12 @@ export class DemandComponent {
       })
     }
 
+    decreaseNbparticipants(trailId: any){
+      this.hikerService.decreaseTrailNbparticipants(trailId).subscribe(res =>{
+        this.snackbar.open('Number of participants decreased!', 'Close', {duration: 5000});
+        // now we need to update the page so we can call the getDemand method and we can update the details of the demand
+        this.getDemand();
+      })
+    }
+
 }

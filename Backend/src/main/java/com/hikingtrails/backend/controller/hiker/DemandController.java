@@ -2,6 +2,7 @@ package com.hikingtrails.backend.controller.hiker;
 
 import com.hikingtrails.backend.dto.AddTrailInDemandDto;
 import com.hikingtrails.backend.dto.BookDto;
+import com.hikingtrails.backend.dto.PlaceBookDto;
 import com.hikingtrails.backend.services.hiker.demand.DemandService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -28,5 +29,14 @@ public class DemandController {
     @PostMapping("/addition")
     public ResponseEntity<BookDto> increaseTrailNbparticipants(@RequestBody AddTrailInDemandDto addTrailInDemandDto){
         return ResponseEntity.status(HttpStatus.CREATED).body(demandService.increaseTrailNbparticipants(addTrailInDemandDto));
+    }
+
+    @PostMapping("/deduction")
+    public ResponseEntity<BookDto> decreaseTrailNbparticipants(@RequestBody AddTrailInDemandDto addTrailInDemandDto){
+        return ResponseEntity.status(HttpStatus.CREATED).body(demandService.decreaseTrailNbparticipants(addTrailInDemandDto));
+    }
+    @PostMapping("/placeBook")
+    public ResponseEntity<BookDto> placeBook(@RequestBody PlaceBookDto placeBookDto){
+        return ResponseEntity.status(HttpStatus.CREATED).body(demandService.placeBook(placeBookDto));
     }
 }
