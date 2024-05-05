@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DemoAngularMaterailModule } from '../DemoAngularMaterialModule';
 import { PostCategoryComponent } from './components/post-category/post-category.component';
 import { PostTrailComponent } from './components/post-trail/post-trail.component';
+import { DeleteConfirmationDialogComponent } from './components/delete-confirmation-dialog/delete-confirmation-dialog.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { PostTrailComponent } from './components/post-trail/post-trail.component
     AdminComponent,
     DashboardComponent,
     PostCategoryComponent,
-    PostTrailComponent
+    PostTrailComponent,
+    DeleteConfirmationDialogComponent
   ],
   imports: [
     CommonModule,
