@@ -68,6 +68,13 @@ export class HikerService {
     })
   }
 
+  placeBook(bookDto): Observable<any>{
+    bookDto.userId = UserStorageService.getUserId()
+    return this.http.post(BASIC_URL + `api/hiker/placeBook`, bookDto, {
+      headers: this.createAuthorizationHeader(),
+    })
+  }
+
   private createAuthorizationHeader(): HttpHeaders{
     return new HttpHeaders().set(
       'Authorization', 'Bearer ' + UserStorageService.getToken()

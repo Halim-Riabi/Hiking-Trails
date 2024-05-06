@@ -3,6 +3,7 @@ import { HikerService } from '../../services/hiker.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { PlaceBookComponent } from '../place-book/place-book.component';
 
 @Component({
   selector: 'app-demand',
@@ -49,6 +50,10 @@ export class DemandComponent {
         // now we need to update the page so we can call the getDemand method and we can update the details of the demand
         this.getDemand();
       })
+    }
+
+    placeBook(){
+      this.dialog.open(PlaceBookComponent);
     }
 
 }
