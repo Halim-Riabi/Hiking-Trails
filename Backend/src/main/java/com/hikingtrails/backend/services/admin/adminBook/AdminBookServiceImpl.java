@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -20,5 +22,20 @@ public class AdminBookServiceImpl implements AdminBookService{
         List<Book> bookList = bookRepository.
                 findAllByBookStatusIn(List.of(BookStatus.Placed, BookStatus.Accepted, BookStatus.Refused));
         return bookList.stream().map(Book::getBookDto).collect(Collectors.toList());
+    }
+
+    public BookDto changeBookStatus(Long bookId, String status){
+        Optional<Book> optionalBook = bookRepository.findById(bookId);
+        if(optionalBook.isPresent()){
+            Book book = optionalBook.get();
+
+            if(Objects.equals(status, "Refused")){
+                book.setBookStatus(BookStatus.Refused);
+            }else if(Objects.equals(status, "Accepted")){
+                book.setBookStatus(BookStatus.Accepted);
+            }
+            return bookRepository.save(book).getBookDto();
+        }
+        return null;
     }
 }

@@ -7,4 +7,5 @@ import java.util.List;
 public interface AdminBookService {
 
     List<BookDto> getAllPlacedBookings();
+    BookDto changeBookStatus(Long bookId, String status);
 }

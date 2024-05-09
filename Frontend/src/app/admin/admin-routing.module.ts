@@ -4,12 +4,14 @@ import { AdminComponent } from './admin.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PostCategoryComponent } from './components/post-category/post-category.component';
 import { PostTrailComponent } from './components/post-trail/post-trail.component';
+import { BookingsComponent } from './components/bookings/bookings.component';
 
 const routes: Routes = [
   { path: '', component: AdminComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'category', component: PostCategoryComponent },
   { path: 'trail', component: PostTrailComponent },
+  { path: 'bookings', component: BookingsComponent },
 ];
 
 @NgModule({
