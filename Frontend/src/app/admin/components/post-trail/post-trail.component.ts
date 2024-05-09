@@ -27,7 +27,7 @@ export class PostTrailComponent {
       this.selectedFile = event.target.files[0];
       this.previewImage();
     }
-
+    // adjusting the size of the image preview should be done
     previewImage(){
       const reader = new FileReader();
       reader.onload = () => {

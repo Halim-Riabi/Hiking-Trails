@@ -26,6 +26,55 @@ export class HikerService {
     })
   }
 
+  addToDemand(trailId:any): Observable<any>{
+    const demandDto = {
+      trailId : trailId,
+      userId : UserStorageService.getUserId()
+    }
+
+    return this.http.post(BASIC_URL + `api/hiker/demand`, demandDto, {
+      headers: this.createAuthorizationHeader(),
+    })
+  }
+
+  increaseTrailNbparticipants(trailId:any): Observable<any>{
+    const demandDto = {
+      trailId : trailId,
+      userId : UserStorageService.getUserId()
+    }
+
+    return this.http.post(BASIC_URL + `api/hiker/addition`, demandDto, {
+      headers: this.createAuthorizationHeader(),
+    })
+  }
+
+  decreaseTrailNbparticipants(trailId:any): Observable<any>{
+    const demandDto = {
+      trailId : trailId,
+      userId : UserStorageService.getUserId()
+    }
+
+    return this.http.post(BASIC_URL + `api/hiker/deduction`, demandDto, {
+      headers: this.createAuthorizationHeader(),
+    })
+  }
+
+
+
+  getDemandByUserId(): Observable<any>{
+    const userId = UserStorageService.getUserId()
+    return this.http.get(BASIC_URL + `api/hiker/demand/${userId}`, {
+      headers: this.createAuthorizationHeader(),
+    })
+  }
+
+  placeBook(bookDto): Observable<any>{
+    bookDto.userId = UserStorageService.getUserId()
+    return this.http.post(BASIC_URL + `api/hiker/placeBook`, bookDto, {
+      headers: this.createAuthorizationHeader(),
+    })
+  }
+
   private createAuthorizationHeader(): HttpHeaders{
     return new HttpHeaders().set(
       'Authorization', 'Bearer ' + UserStorageService.getToken()

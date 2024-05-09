@@ -48,8 +48,10 @@ export class DashboardComponent {
     })
   }
 
-  addToMyList(id:any){
-    
+  addToDemand(id:any){
+    this.hikerService.addToDemand(id).subscribe(res =>{
+      this.snackbar.open("Your Trail added to your demand list successfully", "Close", { duration: 5000})
+    })
   }
 
 }

@@ -1,0 +1,75 @@
+<div class="container">
+    <mat-card>
+        <mat-card-content>
+
+            <table mat-table [dataSource]="bookings" class="mat-elevation-z8">
+
+                <ng-container matColumnDef="trackingId">
+                    <th mat-header-cell *matHeaderCellDef>Tracking ID</th>
+                    <td mat-cell *matCellDef="let book">{{ book.trackingId }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="userName">
+                    <th mat-header-cell *matHeaderCellDef>User Name</th>
+                    <td mat-cell *matCellDef="let book">{{ book.userName }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="amount">
+                    <th mat-header-cell *matHeaderCellDef>Amount</th>
+                    <td mat-cell *matCellDef="let book" class="bold-cell">{{ book.amount }}</td>
+                </ng-container>
+
+                
+                <ng-container matColumnDef="description">
+                    <th mat-header-cell *matHeaderCellDef>Description</th>
+                    <td mat-cell *matCellDef="let book">{{ book.bookDescription }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="address">
+                    <th mat-header-cell *matHeaderCellDef>Address</th>
+                    <td mat-cell *matCellDef="let book">{{ book.address }}</td>
+                </ng-container>
+                
+
+                <ng-container matColumnDef="date">
+                    <th mat-header-cell *matHeaderCellDef>Date</th>
+                    <td mat-cell *matCellDef="let book">{{ book.date | date: 'dd/MM/yyyy' }}</td>
+                </ng-container>
+                
+
+                <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef>Status</th>
+                    <td mat-cell *matCellDef="let book">{{ book.status }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef>Action</th>
+                    <td mat-cell *matCellDef="let book">
+                        <button mat-raised-button color="primary" [matMenuTriggerFor]="menu">Action</button>
+                        <mat-menu #menu="matMenu">
+                            <span>
+                                <span>
+                                    <button mat-menu-item>Refused</button>
+                                </span>
+                                <span>
+                                    <button mat-menu-item>Accepted</button>
+                                </span>
+                            </span>
+                        </mat-menu>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row
+                 *matHeaderRowDef="[ 'trackingId', 'userName', 'amount', 'description', 'address', 'date', 'status', 'action' ]" >
+                 </tr>
+
+                 <tr mat-row
+                 *matRowDef="let row; columns: ['trackingId', 'userName', 'amount', 'description', 'address', 'date', 'status', 'action']" >
+                    </tr>
+
+
+            </table>
+
+        </mat-card-content>
+    </mat-card>
+</div>

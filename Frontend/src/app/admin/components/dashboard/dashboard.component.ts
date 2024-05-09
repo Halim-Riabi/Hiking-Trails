@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { AdminService } from '../../service/admin.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { DeleteConfirmationDialogComponent } from '../delete-confirmation-dialog/delete-confirmation-dialog.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,7 +17,8 @@ export class DashboardComponent {
 
   constructor(private adminService: AdminService,
     private fb: FormBuilder,
-    private snackbar: MatSnackBar){}
+    private snackbar: MatSnackBar,
+    private dialog: MatDialog){}
 
   ngOnInit(){
     this.getAllTrails();
@@ -47,20 +50,125 @@ export class DashboardComponent {
     })
   }
 
-  deleteTrail(trailId:any){
-    this.adminService.deleteTrail(trailId).subscribe(res=>{
-      if(res.body == null){
+  // deleteTrail(trailId:any){
+  //   this.adminService.deleteTrail(trailId).subscribe(res=>{
+  //     if(res.body == null){
+  //       this.snackbar.open('Trail Deleted Successfully', 'Close', {
+  //         duration: 5000
+  //       });
+  //       this.getAllTrails();
+  //     }else{
+  //       this.snackbar.open(res.message, 'Close', {
+  //         duration: 5000,
+  //         panelClass: 'error-snackbar'
+  //       });
+  //     }
+  //   })
+  // }
+
+  // deleteTrail(trailId: any) {
+  //   this.adminService.deleteTrail(trailId).subscribe(
+  //     res => {
+  //       if (res.body == null) {
+  //         this.snackbar.open('Trail Deleted Successfully', 'Close', {
+  //           duration: 5000
+  //         });
+  //         this.getAllTrails();
+  //       } else {
+  //         this.snackbar.open(res.message || 'An error occurred', 'Close', {
+  //           duration: 5000,
+  //           panelClass: 'error-snackbar'
+  //         });
+  //       }
+  //     },
+  //     error => {
+  //       console.error('Error deleting trail:', error);
+  //       this.snackbar.open('An error occurred', 'Close', {
+  //         duration: 5000,
+  //         panelClass: 'error-snackbar'
+  //       });
+  //     }
+  //   );
+  // }
+
+  // deleteTrail(trailId: any) {
+  //   this.adminService.deleteTrail(trailId).subscribe(
+  //     res => {
+  //       if (res && res.body == null) {
+  //         this.snackbar.open('Trail Deleted Successfully', 'Close', {
+  //           duration: 5000
+  //         });
+  //         this.getAllTrails();
+  //       } else if (res) {
+  //         this.snackbar.open(res.message || 'An error occurred', 'Close', {
+  //           duration: 5000,
+  //           panelClass: 'error-snackbar'
+  //         });
+  //       } else {
+  //         this.snackbar.open('An error occurred', 'Close', {
+  //           duration: 5000,
+  //           panelClass: 'error-snackbar'
+  //         });
+  //       }
+  //     },
+  //     error => {
+  //       console.error('Error deleting trail:', error);
+  //       this.snackbar.open('An error occurred', 'Close', {
+  //         duration: 5000,
+  //         panelClass: 'error-snackbar'
+  //       });
+  //     }
+  //   );
+  // }
+
+  // deleteTrail(trailId: any) {
+  //   this.adminService.deleteTrail(trailId).subscribe(
+  //     () => {
+  //       this.snackbar.open('Trail Deleted Successfully', 'Close', {
+  //         duration: 5000
+  //       });
+  //       this.getAllTrails();
+  //     },
+  //     error => {
+  //       console.error('Error deleting trail:', error);
+  //       this.snackbar.open('An error occurred', 'Close', {
+  //         duration: 5000,
+  //         panelClass: 'error-snackbar'
+  //       });
+  //     }
+  //   );
+  // }
+
+  deleteTrail(trailId: any) {
+    const dialogRef = this.dialog.open(DeleteConfirmationDialogComponent, {
+      width: '250px',
+      data: { trailId }
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 'confirm') {
+        this.performDelete(trailId);
+      }
+    });
+  }
+  
+  performDelete(trailId: any) {
+    this.adminService.deleteTrail(trailId).subscribe(
+      () => {
         this.snackbar.open('Trail Deleted Successfully', 'Close', {
           duration: 5000
         });
         this.getAllTrails();
-      }else{
-        this.snackbar.open(res.message, 'Close', {
+      },
+      error => {
+        console.error('Error deleting trail:', error);
+        this.snackbar.open('An error occurred', 'Close', {
           duration: 5000,
           panelClass: 'error-snackbar'
         });
       }
-    })
+    );
   }
+  
 
 }
