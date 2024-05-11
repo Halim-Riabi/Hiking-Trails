@@ -163,5 +163,9 @@ public class DemandServiceImpl implements DemandService{
 
     }
 
+    public List<BookDto> getMyPlacedBookings(Long userId){
+        return bookRepository.findByUserIdAndBookStatusIn(userId, List.of(BookStatus.Placed, BookStatus.Refused,
+                BookStatus.Accepted)).stream().map(Book::getBookDto).collect(Collectors.toList());
+    }
 
 }
