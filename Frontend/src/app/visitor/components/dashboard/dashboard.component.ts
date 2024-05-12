@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Renderer2, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { VisitorService } from '../../services/visitor.service';
@@ -15,7 +15,9 @@ export class DashboardComponent {
 
   constructor(private visitorService: VisitorService,
     private fb: FormBuilder,
-    private snackbar: MatSnackBar){}
+    private snackbar: MatSnackBar,
+    private renderer: Renderer2,
+    private el: ElementRef){}
 
   ngOnInit(){
     this.getAllTrails();
@@ -49,6 +51,13 @@ export class DashboardComponent {
   addToMyList(id:any){
     
   }
+  displayMessage(){
+    this.snackbar.open('You are still a visitor. Please authenticate to continue.', 'Close', {
+      duration: 7000, horizontalPosition: 'center',
+      verticalPosition: 'bottom'
+  });
+  }
 
+ 
 
 }

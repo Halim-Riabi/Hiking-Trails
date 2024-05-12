@@ -32,8 +32,8 @@
             <mat-divider></mat-divider>
             <div class="actions">
                 <!-- I removed this from the button :mat-raised-button -->
-                <button  color="primary" class="update-button" (click)="addToMyList(trail.id)">
-                    Add to my list <mat-icon>bookmark_border</mat-icon>
+                <button  color="primary" class="update-button" routerLink="/login" (click)="displayMessage()">
+                    Add to my list <mat-icon matSuffix>bookmark_border</mat-icon>
                 </button>
             </div>
         </div>
