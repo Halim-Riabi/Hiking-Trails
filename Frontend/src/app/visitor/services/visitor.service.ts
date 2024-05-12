@@ -14,14 +14,14 @@ export class VisitorService {
 
   getAllTrails(): Observable<any>{
     return this.http.get(BASIC_URL + 'api/visitor/trails',{
-      headers: this.createAuthorizationHeader(),
+      // headers: this.createAuthorizationHeader(),
     })
   }
 
 
   getAllTrailsByName(name:any): Observable<any>{
     return this.http.get(BASIC_URL + `api/visitor/search/${name}`,{
-      headers: this.createAuthorizationHeader(),
+      // headers: this.createAuthorizationHeader(),
     })
   }
 
