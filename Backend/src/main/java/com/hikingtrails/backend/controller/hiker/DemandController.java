@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/hiker")
 @RequiredArgsConstructor
@@ -38,5 +40,10 @@ public class DemandController {
     @PostMapping("/placeBook")
     public ResponseEntity<BookDto> placeBook(@RequestBody PlaceBookDto placeBookDto){
         return ResponseEntity.status(HttpStatus.CREATED).body(demandService.placeBook(placeBookDto));
+    }
+
+    @GetMapping("/myBookings/{userId}")
+    public ResponseEntity<List<BookDto>> getMyPlacedBookings(@PathVariable Long userId){
+        return ResponseEntity.ok(demandService.getMyPlacedBookings(userId));
     }
 }

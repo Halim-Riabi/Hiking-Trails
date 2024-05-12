@@ -50,8 +50,16 @@ export class AdminService {
     })
   }
 
+  // if something goes wrong try changing the link with these '' instead of these ``
   getPlacedBookings(): Observable<any>{
     return this.http.get(BASIC_URL + `api/admin/placedBookings`, {
+      headers: this.createAuthorizationHeader(),
+    })
+  }
+
+
+  changeBookStatus(bookId: number, status: string): Observable<any>{
+    return this.http.get(BASIC_URL + `api/admin/book/${bookId}/${status}`, {
       headers: this.createAuthorizationHeader(),
     })
   }

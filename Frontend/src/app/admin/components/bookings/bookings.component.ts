@@ -29,4 +29,14 @@ export class BookingsComponent {
       })
     }
 
+    changeBookStatus(bookId: number, status:string){
+      this.adminService.changeBookStatus(bookId,status).subscribe(res =>{
+        if(res.id != null){
+          this.snackBar.open("Book Status changed successfully", "Close", { duration: 5000 });
+          this.getPlacedBookings();
+        }else{
+          this.snackBar.open("Something went wrong", "Close", { duration: 5000});
+        }
+      })
+    }
 }
