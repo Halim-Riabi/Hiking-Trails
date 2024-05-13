@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DemoAngularMaterailModule } from '../DemoAngularMaterialModule';
 import { DemandComponent } from './components/demand/demand.component';
 import { PlaceBookComponent } from './components/place-book/place-book.component';
+import { MyBookingsComponent } from './components/my-bookings/my-bookings.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { PlaceBookComponent } from './components/place-book/place-book.component
     HikerComponent,
     DashboardComponent,
     DemandComponent,
-    PlaceBookComponent
+    PlaceBookComponent,
+    MyBookingsComponent
   ],
   imports: [
     CommonModule,
