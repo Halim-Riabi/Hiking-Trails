@@ -12,7 +12,8 @@ const routes: Routes = [
   { path : "signup", component: SignupComponent},
   { path: 'hiker', loadChildren: () => import('./hiker/hiker.module').then(m => m.HikerModule) },
   { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
-  { path: 'visitor', loadChildren: () => import('./visitor/visitor.module').then(m => m.VisitorModule) }];
+  { path: 'visitor', loadChildren: () => import('./visitor/visitor.module').then(m => m.VisitorModule) },
+  { path: 'agency', loadChildren: () => import('./agency/agency.module').then(m => m.AgencyModule) }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
