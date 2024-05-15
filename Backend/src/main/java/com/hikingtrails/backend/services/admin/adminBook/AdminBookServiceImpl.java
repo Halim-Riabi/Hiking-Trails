@@ -47,12 +47,13 @@ public class AdminBookServiceImpl implements AdminBookService{
     }
 
     private void sendStatusChangeEmail(Book book, String status) {
-        /*String recipientEmail = book.getOwner().getEmail();*/
+        String reecipientEmail = book.getUser().getEmail();
         String recipientEmail = "halimriabi001@gmail.com";
-        String subject = "Book Status Change Notification";
-        String text = "Dear " + "Halim the dev" + ",\n\n"
-                + "The status of your book '" + "to the hiking trail : Riabna city" + "' has been changed to '" + status + "'.\n\n"
-                + "Regards,\nYour Book Store";
-        emailService.sendSimpleMessage(recipientEmail, subject, text);
+        String subject = "Book Status Changed Notification";
+        String text = "Dear " + book.getUser().getName() + ",\n\n"
+                + "The status of your booking " + "to the hiking trail which you have choose" + " has been changed to '" + status + "'.\n\n"
+                + "Regards, \nHappy trails!\n" +
+                "The Hiking Trail Team.";
+        emailService.sendSimpleMessage(reecipientEmail, subject, text);
     }
 }
