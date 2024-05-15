@@ -4,7 +4,9 @@ import com.hikingtrails.backend.dto.BookDto;
 import com.hikingtrails.backend.entity.Book;
 import com.hikingtrails.backend.enums.BookStatus;
 import com.hikingtrails.backend.repository.BookRepository;
+import com.hikingtrails.backend.services.email.EmailService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,6 +19,9 @@ import java.util.stream.Collectors;
 public class AdminBookServiceImpl implements AdminBookService{
 
     private final BookRepository bookRepository;
+    @Autowired
+    private EmailService emailService;
+
 
     public List<BookDto> getAllPlacedBookings(){
         List<Book> bookList = bookRepository.
@@ -31,11 +36,23 @@ public class AdminBookServiceImpl implements AdminBookService{
 
             if(Objects.equals(status, "Refused")){
                 book.setBookStatus(BookStatus.Refused);
+                sendStatusChangeEmail(book, "Refused");
             }else if(Objects.equals(status, "Accepted")){
                 book.setBookStatus(BookStatus.Accepted);
+                sendStatusChangeEmail(book, "Accepted");
             }
             return bookRepository.save(book).getBookDto();
         }
         return null;
+    }
+
+    private void sendStatusChangeEmail(Book book, String status) {
+        /*String recipientEmail = book.getOwner().getEmail();*/
+        String recipientEmail = "halimriabi001@gmail.com";
+        String subject = "Book Status Change Notification";
+        String text = "Dear " + "Halim the dev" + ",\n\n"
+                + "The status of your book '" + "to the hiking trail : Riabna city" + "' has been changed to '" + status + "'.\n\n"
+                + "Regards,\nYour Book Store";
+        emailService.sendSimpleMessage(recipientEmail, subject, text);
     }
 }
