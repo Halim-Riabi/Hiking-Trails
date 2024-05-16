@@ -53,4 +53,32 @@ public class AdminTrailServiceImpl implements AdminTrailService{
         return false;
     }
 
+    public TrailDto getTrailById(Long trailId){
+        Optional<Trail> optionalTrail = trailRepository.findById(trailId);
+        if(optionalTrail.isPresent()){
+            return optionalTrail.get().getDto();
+        }else{
+            return null;
+        }
+    }
+
+    public TrailDto updateTrail(Long trailId, TrailDto trailDto) throws IOException {
+        Optional<Trail> optionalTrail = trailRepository.findById(trailId);
+        Optional<Category> optionalCategory = categoryRepository.findById(trailDto.getCategoryId());
+        if(optionalTrail.isPresent() && optionalCategory.isPresent()){
+            Trail trail = optionalTrail.get();
+
+            trail.setName(trailDto.getName());
+            trail.setPrice(trailDto.getPrice());
+            trail.setDescription(trailDto.getDescription());
+            trail.setCategory(optionalCategory.get());
+            if(trailDto.getImg() != null){
+                trail.setImg(trailDto.getImg().getBytes());
+            }
+            return trailRepository.save(trail).getDto();
+        }else{
+            return null;
+        }
+    }
+
 }

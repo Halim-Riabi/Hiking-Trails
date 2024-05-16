@@ -42,5 +42,27 @@ public class AdminTrailController {
         }
         return ResponseEntity.notFound().build();
     }
+    /*FrequentlyAskedQuestion API*/
+
+    @GetMapping("/trail/{trailId}")
+    public ResponseEntity<TrailDto> getTrailById(@PathVariable Long trailId){
+        TrailDto trailDto = adminTrailService.getTrailById(trailId);
+        if(trailDto != null){
+            return ResponseEntity.ok(trailDto);
+        }else{
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PostMapping("/trail/{trailId}")
+    public ResponseEntity<TrailDto> updateTrail(@PathVariable Long trailId, @ModelAttribute TrailDto trailDto) throws IOException {
+        TrailDto updatedTrail = adminTrailService.updateTrail(trailId, trailDto);
+        if(updatedTrail != null){
+            return ResponseEntity.ok(updatedTrail);
+        }else{
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 
 }

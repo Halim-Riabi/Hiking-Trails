@@ -13,4 +13,6 @@ public interface AdminTrailService  {
     List<TrailDto> getAllTrailByName(String name);
 
     boolean deleteTrail(Long id);
+    TrailDto getTrailById(Long trailId);
+    TrailDto updateTrail(Long trailId, TrailDto trailDto) throws IOException;
 }
