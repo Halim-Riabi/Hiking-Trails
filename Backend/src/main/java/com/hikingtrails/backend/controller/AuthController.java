@@ -59,7 +59,7 @@ public class AuthController {
             );
 
             response.addHeader("Access-Control-Expose-Headers", "Authorization");
-            response.addHeader("Access-Control-Allow-Headers", "Authorization, X-PINGOTHER, Origin, " +
+            response.addHeader("Access-Control-Allow-Headers", "Authorization, X-PING-OTHER, Origin, " +
                   "X-Requested-With, Content-Type, Accept, X-Custom-header");
             /*response.addHeader("Access-Control-Allow-Origin","*");*/
             response.addHeader(HEADER_STRING, TOKEN_PREFIX + jwt);
