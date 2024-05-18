@@ -144,7 +144,7 @@ public class DemandServiceImpl implements DemandService{
         Book activeBook = bookRepository.findByUserIdAndBookStatus(placeBookDto.getUserId(), BookStatus.Pending);
         Optional<User> optionalUser = userRepository.findById(placeBookDto.getUserId());
         if(optionalUser.isPresent()){
-            activeBook.setBookDescription(placeBookDto.getBookDescripton());
+            activeBook.setBookDescription(placeBookDto.getBookDescription());
             activeBook.setAddress(placeBookDto.getAddress());
             activeBook.setDate(new Date());
             activeBook.setBookStatus(BookStatus.Placed);
