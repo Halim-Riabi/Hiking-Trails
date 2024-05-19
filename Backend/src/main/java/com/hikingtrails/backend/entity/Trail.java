@@ -17,6 +17,10 @@ public class Trail {
     private Long id;
     private String name;
     private Long price;
+    private String startLat;
+    private String startLng;
+    private String endLat;
+    private String endLng;
     @Lob
     private String description;
     @Lob
@@ -34,6 +38,10 @@ public class Trail {
         trailDto.setId(id);
         trailDto.setName(name);
         trailDto.setPrice(price);
+        trailDto.setStartLat(startLat);
+        trailDto.setStartLng(startLng);
+        trailDto.setEndLat(endLat);
+        trailDto.setEndLng(endLng);
         trailDto.setDescription(description);
         trailDto.setByteImg(img);
         trailDto.setCategoryId(category.getId());

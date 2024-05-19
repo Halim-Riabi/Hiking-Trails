@@ -42,6 +42,10 @@ export class PostTrailComponent {
         name: [null, [Validators.required]],
         price: [null, [Validators.required]],
         description: [null, [Validators.required]],
+        slatitude: [null, [Validators.required]],
+        slongitude: [null, [Validators.required]],
+        elatitude: [null, [Validators.required]],
+        elongitude: [null, [Validators.required]],
       });
 
       this.getAllCategories();
@@ -62,6 +66,10 @@ export class PostTrailComponent {
         formData.append('name', this.trailForm.get('name').value);
         formData.append('description', this.trailForm.get('description').value);
         formData.append('price', this.trailForm.get('price').value);
+        formData.append('slatitude', this.trailForm.get('slatitude').value);
+        formData.append('slongitude', this.trailForm.get('slongitude').value);
+        formData.append('elatitude', this.trailForm.get('elatitude').value);
+        formData.append('elongitude', this.trailForm.get('elongitude').value);
 
         this.adminService.addTrail(formData).subscribe((res) =>{
           if (res.id != null){

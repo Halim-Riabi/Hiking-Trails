@@ -25,6 +25,10 @@ public class AdminTrailServiceImpl implements AdminTrailService{
         trail.setName(trailDto.getName());
         trail.setDescription(trailDto.getDescription());
         trail.setPrice(trailDto.getPrice());
+        trail.setStartLat(trailDto.getStartLat());
+        trail.setStartLng(trailDto.getStartLng());
+        trail.setEndLat(trailDto.getEndLat());
+        trail.setEndLng(trailDto.getEndLng());
         trail.setImg(trailDto.getImg().getBytes());
 
         Category category = categoryRepository.findById(trailDto.getCategoryId()).orElseThrow();
@@ -70,6 +74,10 @@ public class AdminTrailServiceImpl implements AdminTrailService{
 
             trail.setName(trailDto.getName());
             trail.setPrice(trailDto.getPrice());
+            trail.setStartLat(trailDto.getStartLat());
+            trail.setStartLng(trailDto.getStartLng());
+            trail.setEndLat(trailDto.getEndLat());
+            trail.setEndLng(trailDto.getEndLng());
             trail.setDescription(trailDto.getDescription());
             trail.setCategory(optionalCategory.get());
             if(trailDto.getImg() != null){
