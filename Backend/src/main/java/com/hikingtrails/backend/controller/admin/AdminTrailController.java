@@ -54,7 +54,7 @@ public class AdminTrailController {
         }
     }
 
-    @PostMapping("/trail/{trailId}")
+    @PutMapping("/trail/{trailId}")
     public ResponseEntity<TrailDto> updateTrail(@PathVariable Long trailId, @ModelAttribute TrailDto trailDto) throws IOException {
         TrailDto updatedTrail = adminTrailService.updateTrail(trailId, trailDto);
         if(updatedTrail != null){
