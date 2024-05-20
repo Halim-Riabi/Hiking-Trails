@@ -30,8 +30,20 @@ export class AdminService {
     })
   }
 
+  updateTrail(trailId:any, trailDto:any): Observable<any>{
+    return this.http.put(BASIC_URL + `api/admin/trail/${trailId}`, trailDto,{
+      headers: this.createAuthorizationHeader(),
+    })
+  }
+
   getAllTrails(): Observable<any>{
     return this.http.get(BASIC_URL + 'api/admin/trails',{
+      headers: this.createAuthorizationHeader(),
+    })
+  }
+
+  getTrailById(trailId): Observable<any>{
+    return this.http.get(BASIC_URL + `api/admin/trail/${trailId}`,{
       headers: this.createAuthorizationHeader(),
     })
   }

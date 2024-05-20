@@ -1,31 +1,40 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AdminService } from '../../service/admin.service';
 
 @Component({
-  selector: 'app-post-trail',
-  templateUrl: './post-trail.component.html',
-  styleUrls: ['./post-trail.component.scss']
+  selector: 'app-update-trail',
+  templateUrl: './update-trail.component.html',
+  styleUrls: ['./update-trail.component.scss']
 })
-export class PostTrailComponent {
+export class UpdateTrailComponent {
+
+  trailId = this.activatedroute.snapshot.params['trailId'];
 
   trailForm: FormGroup;
   listOfCategories: any = [];
   selectedFile: File | null;
   imagePreview: string | ArrayBuffer | null;
 
+  existingImage: string | null = null;
+  imgChanged = false;
+
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private snackBar: MatSnackBar,
-    private adminService: AdminService
+    private adminService: AdminService,
+    private activatedroute: ActivatedRoute,
     ){}
 
     onFileSelected(event: any){
       this.selectedFile = event.target.files[0];
       this.previewImage();
+      this.imgChanged = true;
+
+      this.existingImage = null;
     }
     // adjusting the size of the image preview should be done
     previewImage(){
@@ -49,7 +58,7 @@ export class PostTrailComponent {
       });
 
       this.getAllCategories();
-      
+      this.getTrailById();
     }
 
     getAllCategories(){
@@ -58,10 +67,20 @@ export class PostTrailComponent {
       })
     }
 
-    addTrail(): void {
+    getTrailById(){
+      this.adminService.getTrailById(this.trailId).subscribe(res=>{
+        this.trailForm.patchValue(res);
+        this.existingImage = 'data:image/jpeg;base64,' + res.byteImg;
+      })
+    }
+
+    updateTrail(): void {
       if(this.trailForm.valid){
         const formData: FormData = new FormData();
-        formData.append('img', this.selectedFile);
+        if(this.imgChanged && this.selectedFile){
+          formData.append('img', this.selectedFile);
+        }
+        
         formData.append('categoryId', this.trailForm.get('categoryId').value);
         formData.append('name', this.trailForm.get('name').value);
         formData.append('description', this.trailForm.get('description').value);
@@ -71,9 +90,9 @@ export class PostTrailComponent {
         formData.append('elatitude', this.trailForm.get('elatitude').value);
         formData.append('elongitude', this.trailForm.get('elongitude').value);
 
-        this.adminService.addTrail(formData).subscribe((res) =>{
+        this.adminService.updateTrail(this.trailId,formData).subscribe((res) =>{
           if (res.id != null){
-            this.snackBar.open('Trail Posted Successfully!', 'Close', {
+            this.snackBar.open('Trail Updated Successfully!', 'Close', {
               duration: 5000
             });
             this.router.navigateByUrl('/admin/dashboard');

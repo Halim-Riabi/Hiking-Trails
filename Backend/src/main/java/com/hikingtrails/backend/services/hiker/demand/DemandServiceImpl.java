@@ -13,6 +13,7 @@ import com.hikingtrails.backend.repository.BookRepository;
 import com.hikingtrails.backend.repository.DemandListRepository;
 import com.hikingtrails.backend.repository.TrailRepository;
 import com.hikingtrails.backend.repository.UserRepository;
+import com.hikingtrails.backend.services.email.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,6 +37,9 @@ public class DemandServiceImpl implements DemandService{
 
     @Autowired
     private TrailRepository trailRepository;
+
+    @Autowired
+    private EmailService emailService;
 
     public ResponseEntity<?> addTrailToDemand(AddTrailInDemandDto addTrailInDemandDto){
     //here in this method first of all we need to get the current active booking of our user
@@ -140,7 +144,7 @@ public class DemandServiceImpl implements DemandService{
         Book activeBook = bookRepository.findByUserIdAndBookStatus(placeBookDto.getUserId(), BookStatus.Pending);
         Optional<User> optionalUser = userRepository.findById(placeBookDto.getUserId());
         if(optionalUser.isPresent()){
-            activeBook.setBookDescription(placeBookDto.getBookDescripton());
+            activeBook.setBookDescription(placeBookDto.getBookDescription());
             activeBook.setAddress(placeBookDto.getAddress());
             activeBook.setDate(new Date());
             activeBook.setBookStatus(BookStatus.Placed);
@@ -156,11 +160,22 @@ public class DemandServiceImpl implements DemandService{
             book.setBookStatus(BookStatus.Pending);
             //when we will creating a new user one demand list will be automatically created for that particular user with the status of pending
             bookRepository.save(book);
-
+            sendBookPlacedEmail(activeBook.getUser().getEmail(), activeBook.getUser().getName());
             return activeBook.getBookDto();
         }
         return null;
 
+    }
+
+    private void sendBookPlacedEmail(String email, String name) {
+        /*String recipientEmail = book.getOwner().getEmail();*/
+        String recipientEmail = "halimriabi001@gmail.com";
+        String subject = "Book is placed successfully Notification";
+        String text = "Dear " + name + ",\n\n"
+                + "Your Book is placed " + "on your chosen trail" + " you will receive a notification from us after the admin admission "  + ".\n\n"
+                + "Regards,\nHappy trails!\n" +
+                "The Hiking Trail Team.";
+        emailService.sendSimpleMessage(email, subject, text);
     }
 
     public List<BookDto> getMyPlacedBookings(Long userId){

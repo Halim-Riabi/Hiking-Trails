@@ -11,6 +11,7 @@ import { PostCategoryComponent } from './components/post-category/post-category.
 import { PostTrailComponent } from './components/post-trail/post-trail.component';
 import { DeleteConfirmationDialogComponent } from './components/delete-confirmation-dialog/delete-confirmation-dialog.component';
 import { BookingsComponent } from './components/bookings/bookings.component';
+import { UpdateTrailComponent } from './components/update-trail/update-trail.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { BookingsComponent } from './components/bookings/bookings.component';
     PostCategoryComponent,
     PostTrailComponent,
     DeleteConfirmationDialogComponent,
-    BookingsComponent
+    BookingsComponent,
+    UpdateTrailComponent
   ],
   imports: [
     CommonModule,

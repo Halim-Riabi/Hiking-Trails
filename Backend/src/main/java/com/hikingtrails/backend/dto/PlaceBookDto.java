@@ -7,5 +7,5 @@ public class PlaceBookDto {
 
     private Long userId;
     private String address;
-    private String bookDescripton;
+    private String bookDescription;
 }

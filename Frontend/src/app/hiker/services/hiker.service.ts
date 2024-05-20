@@ -75,6 +75,13 @@ export class HikerService {
     })
   }
 
+  getBookingsByUserId(): Observable<any>{
+    const userId = UserStorageService.getUserId()
+    return this.http.get(BASIC_URL + `api/hiker/myBookings/${userId}`, {
+      headers: this.createAuthorizationHeader(),
+    })
+  }
+
   private createAuthorizationHeader(): HttpHeaders{
     return new HttpHeaders().set(
       'Authorization', 'Bearer ' + UserStorageService.getToken()

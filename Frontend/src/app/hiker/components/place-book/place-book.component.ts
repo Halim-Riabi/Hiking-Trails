@@ -32,8 +32,8 @@ export class PlaceBookComponent {
   placeBook(){
     this.hikerService.placeBook(this.bookForm.value).subscribe(res => {
       if (res.id != null) {
-        this.snackbar.open("Your book is placed successfully", "Close", { duration: 5000})
-        this.router.navigateByUrl("/hiker/my-bookings");
+        this.snackbar.open("Your book is placed successfully and you will receive an email from us", "Close", { duration: 5000})
+        this.router.navigateByUrl("/hiker/my_bookings");
         this.closeForm();
       }else {
         this.snackbar.open("Something went wrong", "Close", { duration: 5000})

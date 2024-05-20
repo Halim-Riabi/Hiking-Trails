@@ -1,7 +1,7 @@
 <div class="container">
-    <h2>Add Trail</h2>
+    <h2>Update Trail</h2>
 
-    <form [formGroup]="trailForm" (ngSubmit)="addTrail()">
+    <form [formGroup]="trailForm" (ngSubmit)="updateTrail()">
 
         <div class="file-upload-container">
             <label class="file-upload-label">
@@ -16,6 +16,11 @@
                 </div>
             </div>
 
+            <div *ngIf="existingImage" class="image-preview"> 
+                <div class="circle-image">
+                    <img [src]="existingImage" alt="Existing Image" class="preview-image">
+                </div>
+            </div>
         </div>
 
         <mat-form-field appearance="outline" class="form-field">
@@ -92,7 +97,7 @@
 
 
 
-        <button mat-raised-button color="primary" type="submit">Add Trail</button>
+        <button mat-raised-button color="primary" type="submit">Update Trail</button>
 
     </form>
 

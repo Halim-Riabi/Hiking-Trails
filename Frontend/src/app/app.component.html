@@ -2,7 +2,7 @@
 <div *ngIf="!isHikerLoggedIn && !isAdminLoggedIn">
 <mat-toolbar class="primary" class="navbar">
 
-  <span class="navbar-brand">Hiking Trails</span>
+  <span class="navbar-brand" routerLink="/visitor/dashboard" >Hiking Trails</span>
   <span class="spacer"></span>
   <button mat-button routerLink="/book" routerLinkActive="active" >Track Booking</button>
   <button mat-button routerLink="/signup" rouuterLinkActive="active" >Register</button>
@@ -15,7 +15,7 @@
 <div *ngIf="isAdminLoggedIn">
 <mat-toolbar class="primary" class="navbar">
 
-  <span class="navbar-brand">Hiking Trails</span>
+  <span class="navbar-brand" routerLink="/admin/dashboard">Hiking Trails</span>
   <span class="spacer"></span>
 <button mat-button routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</button>
 <button mat-button routerLink="/admin/analytics" routerLinkActive="active">Analytics</button>
@@ -32,11 +32,11 @@
 <div *ngIf="isHikerLoggedIn">
 <mat-toolbar class="primary" class="navbar">
 
-  <span class="navbar-brand">Hiking Trails</span>
+  <span class="navbar-brand" routerLink="/hiker/dashboard" >Hiking Trails</span>
   <span class="spacer"></span>
   <button mat-button routerLink="/hiker/dashboard" routerLinkActive="active" >Dashboard</button>
   <button mat-button routerLink="/hiker/demand" rouuterLinkActive="active" >Demand List</button>
-  <button mat-button routerLink="/hiker/my_orders" routerLinkActive="active" >Bookings</button>
+  <button mat-button routerLink="/hiker/my_bookings" routerLinkActive="active" >Bookings</button>
   <button mat-button routerLink="/hiker/wishlist" routerLinkActive="active" >Wishlist</button>
   <button mat-button routerLink="/hiker/profile" routerLinkActive="active" >Profile</button>
   <button mat-button routerLinkActive="active" (click)="logout()">Logout</button>

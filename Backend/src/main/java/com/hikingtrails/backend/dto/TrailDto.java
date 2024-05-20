@@ -10,6 +10,10 @@ public class TrailDto {
     private Long id;
     private String name;
     private Long price;
+    private String startLat;
+    private String startLng;
+    private String endLat;
+    private String endLng;
     private String description;
     private byte[] byteImg;
     private Long categoryId;
