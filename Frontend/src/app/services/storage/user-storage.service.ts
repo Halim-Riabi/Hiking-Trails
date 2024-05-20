@@ -61,13 +61,13 @@ export class UserStorageService {
   }
 
 
-  // static isAgencyLoggedIn(): boolean {
-  //   if(this.getToken === null){
-  //     return false;
-  //   }
-  //   const role: string = this.getUserRole();
-  //   return role == 'Agency';
-  // }
+   static isAgencyLoggedIn(): boolean {
+     if(this.getToken === null){
+      return false;
+     }
+     const role: string = this.getUserRole();
+    return role == 'AGENCY';
+   }
 
   static signOut(): void {
     window.localStorage.removeItem(TOKEN);

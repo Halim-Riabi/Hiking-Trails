@@ -46,6 +46,8 @@ export class LoginComponent {
             this.router.navigateByUrl('admin/dashboard');
           }else if (UserStorageService.isHikerLoggedIn()){
             this.router.navigateByUrl('hiker/dashboard');
+          }else if (UserStorageService.isAgencyLoggedIn()){
+            this.router.navigateByUrl('agency/dashboard');
           }
       },
       (error) =>{

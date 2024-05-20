@@ -12,6 +12,7 @@ export class AppComponent {
 
   isHikerLoggedIn : boolean = UserStorageService.isHikerLoggedIn();
   isAdminLoggedIn : boolean = UserStorageService.isAdminLoggedIn();
+  isAgencyLoggedIn : boolean = UserStorageService.isAgencyLoggedIn();
 
   constructor(private router: Router){}
 
@@ -19,6 +20,7 @@ export class AppComponent {
     this.router.events.subscribe(event =>{
       this.isHikerLoggedIn = UserStorageService.isHikerLoggedIn();
       this.isAdminLoggedIn = UserStorageService.isAdminLoggedIn();
+      this.isAgencyLoggedIn = UserStorageService.isAgencyLoggedIn();
     })
   }
 

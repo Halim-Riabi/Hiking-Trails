@@ -66,4 +66,20 @@ public class AuthServiceImpl implements AuthService{
         }
 
     }
+
+
+    @PostConstruct
+    public void createAgencyAccount() {
+        User agencyAccount = userRepository.findByRole(UserRole.AGENCY);
+        if (null == agencyAccount) {
+            User user = new User();
+            user.setEmail("agency@test.com");
+            user.setName("agency");
+            user.setRole(UserRole.AGENCY);
+            user.setPassword(new BCryptPasswordEncoder().encode("agency"));
+            userRepository.save(user);
+        }
+
+
+    }
 }

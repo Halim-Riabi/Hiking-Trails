@@ -4,5 +4,6 @@ public enum UserRole {
 
     ADMIN,
     HIKER,
-    VISITOR
+    VISITOR,
+    AGENCY
 }
