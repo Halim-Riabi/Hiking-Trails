@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AdminService } from 'src/app/admin/service/admin.service';
 import { HikerService } from '../../services/hiker.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,6 +17,7 @@ export class DashboardComponent {
 
   constructor(private hikerService: HikerService,
     private fb: FormBuilder,
+    private router: Router,
     private snackbar: MatSnackBar){}
 
   ngOnInit(){
@@ -51,6 +53,7 @@ export class DashboardComponent {
   addToDemand(id:any){
     this.hikerService.addToDemand(id).subscribe(res =>{
       this.snackbar.open("Your Trail added to your demand list successfully", "Close", { duration: 5000})
+      this.router.navigateByUrl("/hiker/demand");
     })
   }
 
