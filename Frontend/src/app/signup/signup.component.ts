@@ -13,6 +13,7 @@ export class SignupComponent {
 
   signupForm! : FormGroup;
   hidePassword = true;
+  role: string;
 
   constructor(private fb: FormBuilder,
     private snackBar: MatSnackBar,
@@ -26,7 +27,8 @@ export class SignupComponent {
       name: [null, [Validators.required]],
       email: [null, [Validators.required, Validators.email]],
       password: [null, [Validators.required]],
-      confirmPassword: [null, [Validators.required]]
+      confirmPassword: [null, [Validators.required]],
+      role: [null, [Validators.required]]
     })
   }
 
@@ -43,7 +45,7 @@ export class SignupComponent {
       return;
     }
 
-    this.authService.register(this.signupForm.value).subscribe(
+    this.authService.register(this.signupForm.value).subscribe(      
       (response) =>{
         this.snackBar.open('Sign up successful!', 'Close', { duration: 5000});
         this.router.navigateByUrl("/login");

@@ -11,6 +11,8 @@ import { MatCardModule } from '@angular/material/card';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastModule } from '@syncfusion/ej2-angular-notifications';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { ToastModule } from '@syncfusion/ej2-angular-notifications';
     ReactiveFormsModule,
     HttpClientModule,
     ToastModule,
+    MatSelectModule,
+    MatFormFieldModule,
 
   ],
   providers: [],
