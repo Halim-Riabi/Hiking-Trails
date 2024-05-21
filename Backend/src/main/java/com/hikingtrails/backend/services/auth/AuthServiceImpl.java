@@ -31,7 +31,12 @@ public class AuthServiceImpl implements AuthService{
         user.setEmail(signupRequest.getEmail());
         user.setName(signupRequest.getName());
         user.setPassword(new BCryptPasswordEncoder().encode(signupRequest.getPassword()));
-        user.setRole(UserRole.AGENCY);
+        if(signupRequest.getName().toLowerCase().contains("agency") || signupRequest.getEmail().toLowerCase().contains("agency") || signupRequest.getEmail().toLowerCase().contains("agence") || signupRequest.getName().toLowerCase().contains("agence")){
+            user.setRole(UserRole.AGENCY);
+        }
+        else{
+            user.setRole(UserRole.HIKER);
+        }
         /*This is for saving into the db*/
         User createdUser =userRepository.save(user);
 
@@ -68,7 +73,7 @@ public class AuthServiceImpl implements AuthService{
     }
 
 
-    @PostConstruct
+   /* @PostConstruct
     public void createAgencyAccount() {
         User agencyAccount = userRepository.findByRole(UserRole.AGENCY);
         if (null == agencyAccount) {
@@ -81,5 +86,5 @@ public class AuthServiceImpl implements AuthService{
         }
 
 
-    }
+    }*/
 }
