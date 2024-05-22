@@ -1,5 +1,6 @@
 package com.hikingtrails.backend.entity;
 
+import com.hikingtrails.backend.dto.ReviewDto;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.OnDelete;
@@ -29,4 +30,18 @@ public class Review {
     @JoinColumn(name = "trail_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Trail trail;
+
+    public ReviewDto getDto(){
+        ReviewDto reviewDto = new ReviewDto();
+
+        reviewDto.setId(id);
+        reviewDto.setRating(rating);
+        reviewDto.setDescription(description);
+        reviewDto.setReturnedImg(img);
+        reviewDto.setTrailId(trail.getId());
+        reviewDto.setUserId(user.getId());
+        reviewDto.setUsername(user.getName());
+
+        return reviewDto;
+    }
 }
