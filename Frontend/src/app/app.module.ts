@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ToastModule } from '@syncfusion/ej2-angular-notifications';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { MatSelectModule } from '@angular/material/select';
     ToastModule,
     MatSelectModule,
     MatFormFieldModule,
+    NgxPaginationModule,
 
   ],
   providers: [],
