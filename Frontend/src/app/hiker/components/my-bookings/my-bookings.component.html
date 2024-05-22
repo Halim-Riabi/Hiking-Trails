@@ -43,7 +43,10 @@
             <mat-header-cell *matHeaderCellDef style="font-weight: bolder; color: #003973;">
                 Action</mat-header-cell>
             <mat-cell *matCellDef="let myBook">
-            <!-- in the upcoming videos -->
+                <span *ngIf="myBook.bookStatus == 'Accepted'">
+                    <button mat-raised-button color="primary" type="submit"
+                    routerLink="/hiker/booked_trails/{{myBook.id}}">Review</button>
+                </span>
             </mat-cell>
         </ng-container>
 

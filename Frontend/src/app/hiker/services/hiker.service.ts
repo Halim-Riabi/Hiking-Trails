@@ -82,6 +82,12 @@ export class HikerService {
     })
   }
 
+  getBookedTrails(bookId:number): Observable<any>{
+    return this.http.get(BASIC_URL + `api/hiker/booked-trails/${bookId}`, {
+      headers: this.createAuthorizationHeader(),
+    })
+  }
+
   private createAuthorizationHeader(): HttpHeaders{
     return new HttpHeaders().set(
       'Authorization', 'Bearer ' + UserStorageService.getToken()

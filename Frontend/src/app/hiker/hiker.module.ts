@@ -10,6 +10,8 @@ import { DemoAngularMaterailModule } from '../DemoAngularMaterialModule';
 import { DemandComponent } from './components/demand/demand.component';
 import { PlaceBookComponent } from './components/place-book/place-book.component';
 import { MyBookingsComponent } from './components/my-bookings/my-bookings.component';
+import { ViewBookedTrailsComponent } from './components/view-booked-trails/view-booked-trails.component';
+import { ReviewBookedTrailComponent } from './components/review-booked-trail/review-booked-trail.component';
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import { MyBookingsComponent } from './components/my-bookings/my-bookings.compon
     DashboardComponent,
     DemandComponent,
     PlaceBookComponent,
-    MyBookingsComponent
+    MyBookingsComponent,
+    ViewBookedTrailsComponent,
+    ReviewBookedTrailComponent
   ],
   imports: [
     CommonModule,

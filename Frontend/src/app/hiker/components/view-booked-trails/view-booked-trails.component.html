@@ -1,0 +1,34 @@
+<div class="booked-trail-container">
+    <div class="booked-trail" *ngFor="let trail of bookedTrailDetailsList">
+        <div class="trail-info">
+            <div class="trail-image">
+                <img [src]="trail.processedImg" alt="trail-image" />
+            </div>
+            <div class="trail-details">
+                <div class="item-row">
+                    <div class="item-name">
+                        {{ trail.name }}
+                    </div>
+                    <div class="item-price">
+                        Price: {{ trail.price | currency }}
+                    </div>
+                    <div class="item-nbParticipants">
+                        Number of Participants: {{ trail.nbParticipants }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button mat-raised-button color="primary" routerLink="/hiker/review/{{ trail.id }}">
+                    Give Review</button>
+            </div>
+
+        </div>
+        <div class="total-price">
+            Total: {{ totalAmount | currency }}
+        </div>
+
+    </div>
+
+
+</div>
