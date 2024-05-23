@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,7 +14,7 @@ import { ToastModule } from '@syncfusion/ej2-angular-notifications';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { NgxPaginationModule } from 'ngx-pagination';
-
+// import { NgxPaginationModule } from 'ngx-pagination/lib/ngx-pagination.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +36,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

@@ -1,4 +1,5 @@
-<form [formGroup]="searchTrailForm" class="search-form" (submit)="submitForm()">
+<!-- dashboard.component.html -->
+<form [formGroup]="searchTrailForm" class="search-form" (ngSubmit)="submitForm()">
     <mat-form-field appearance="outline" class="search-input">
         <mat-label>Enter Keyword to search</mat-label>
         <input matInput formControlName="title">
@@ -7,17 +8,15 @@
         </button>
     </mat-form-field>
 </form>
+
 <div class="trail-list">
-
-
-    <mat-card class="trail-card" *ngFor="let trail of trails">
+    <mat-card class="trail-card" *ngFor="let trail of trails | paginate: { itemsPerPage: itemsPerPage, currentPage: page, totalItems: totalItems }">
         <div class="trail-image">
             <img [src]="trail.processedImg" alt="trail-image">
         </div>
         <div class="trail-details">
             <h2 class="trail-name">{{ trail.name }}</h2>
             <p class="trail-description">{{ trail.description }}</p>
-
             <mat-divider></mat-divider>
             <div class="trail-info">
                 <div class="info-row">
@@ -31,13 +30,12 @@
             </div>
             <mat-divider></mat-divider>
             <div class="actions">
-                <!-- emoved this from the button :mat-raised-button -->
-                <button  color="primary" class="update-button" (click)="addToDemand(trail.id)">
+                <button color="primary" class="update-button" (click)="addToDemand(trail.id)">
                     Add to my list
-                     <!-- <mat-icon>bookmark_border</mat-icon> -->
                 </button>
             </div>
         </div>
     </mat-card>
-
 </div>
+
+<pagination-controls (pageChange)="onPageChange($event)"></pagination-controls>

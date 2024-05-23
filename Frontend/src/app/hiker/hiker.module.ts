@@ -12,6 +12,8 @@ import { PlaceBookComponent } from './components/place-book/place-book.component
 import { MyBookingsComponent } from './components/my-bookings/my-bookings.component';
 import { ViewBookedTrailsComponent } from './components/view-booked-trails/view-booked-trails.component';
 import { ReviewBookedTrailComponent } from './components/review-booked-trail/review-booked-trail.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+// import { NgxPaginationModule } from 'ngx-pagination/lib/ngx-pagination.module';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { ReviewBookedTrailComponent } from './components/review-booked-trail/rev
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    DemoAngularMaterailModule
+    DemoAngularMaterailModule,
+    NgxPaginationModule
+    // NgxPaginationModule
   ]
 })
 export class HikerModule { }
