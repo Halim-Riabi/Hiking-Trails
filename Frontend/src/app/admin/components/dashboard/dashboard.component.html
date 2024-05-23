@@ -33,6 +33,9 @@
             <div class="actions">
                 <!-- <button mat-raised-button color="primary" class="update-button"
                         [routerLink]="'/admin/faq/' + trail.id">FAQ</button> -->
+                <div class="coordinates-button" ><button  color=""  (click)="openMapDialog()">
+                    <mat-icon>place</mat-icon>
+                </button></div>
                 <button mat-raised-button color="primary" class="update-button"
                         [routerLink]="'/admin/trail/' + trail.id">Update</button>
                 <button mat-raised-button color="warn" class="delete-button" (click)="deleteTrail(trail.id)">

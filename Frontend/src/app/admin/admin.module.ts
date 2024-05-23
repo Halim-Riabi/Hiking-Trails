@@ -12,6 +12,7 @@ import { PostTrailComponent } from './components/post-trail/post-trail.component
 import { DeleteConfirmationDialogComponent } from './components/delete-confirmation-dialog/delete-confirmation-dialog.component';
 import { BookingsComponent } from './components/bookings/bookings.component';
 import { UpdateTrailComponent } from './components/update-trail/update-trail.component';
+import { MapDialogComponent } from './components/map-dialog/map-dialog.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { UpdateTrailComponent } from './components/update-trail/update-trail.com
     PostTrailComponent,
     DeleteConfirmationDialogComponent,
     BookingsComponent,
-    UpdateTrailComponent
+    UpdateTrailComponent,
+    MapDialogComponent
   ],
   imports: [
     CommonModule,

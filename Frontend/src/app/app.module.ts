@@ -14,6 +14,9 @@ import { ToastModule } from '@syncfusion/ej2-angular-notifications';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
 // import { NgxPaginationModule } from 'ngx-pagination/lib/ngx-pagination.module';
 @NgModule({
   declarations: [
@@ -33,6 +36,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     MatSelectModule,
     MatFormFieldModule,
     NgxPaginationModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDialogModule,
 
   ],
   providers: [],
