@@ -14,16 +14,15 @@
 
 <div *ngIf="isAdminLoggedIn">
 <mat-toolbar class="primary" class="navbar">
-
   <span class="navbar-brand" routerLink="/admin/dashboard">Hiking Trails</span>
   <span class="spacer"></span>
 <button mat-button routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</button>
-<button mat-button routerLink="/admin/analytics" routerLinkActive="active">Analytics</button>
+<!-- <button mat-button routerLink="/admin/analytics" routerLinkActive="active">Analytics</button> -->
 <button mat-button routerLink="/admin/category" routerLinkActive="active">Category</button>
-<button mat-button routerLink="/admin/trail" routerLinkActive="active">Trail</button>
+<button mat-button routerLink="/admin/trail" routerLinkActive="active">Add Trail</button>
 <button mat-button routerLink="/admin/bookings" routerLinkActive="active">Booking requests</button>
-<button mat-button routerLink="/admin/post-coupon" routerLinkActive="active">Post Coupon</button>
-<button mat-button routerLink="/admin/coupons" routerLinkActive="active">Coupons</button>
+<!-- <button mat-button routerLink="/admin/post-coupon" routerLinkActive="active">Post Coupon</button> -->
+<!-- <button mat-button routerLink="/admin/coupons" routerLinkActive="active">Coupons</button> -->
 <button mat-button routerLinkActive="active" (click)="logout()">Logout</button>
 </mat-toolbar>
 </div>
@@ -35,12 +34,12 @@
   <span class="navbar-brand" routerLink="/agency/dashboard">Hiking Trails</span>
   <span class="spacer"></span>
 <button mat-button routerLink="/agency/dashboard" routerLinkActive="active">Dashboard</button>
-<button mat-button routerLink="/agency/analytics" routerLinkActive="active">Analytics</button>
+<!-- <button mat-button routerLink="/agency/analytics" routerLinkActive="active">Analytics</button> -->
 <button mat-button routerLink="/agency/category" routerLinkActive="active">Category</button>
-<button mat-button routerLink="/agency/trail" routerLinkActive="active">Trail</button>
+<button mat-button routerLink="/agency/trail" routerLinkActive="active">Add Trail</button>
 <button mat-button routerLink="/agency/bookings" routerLinkActive="active">Booking requests</button>
-<button mat-button routerLink="/agency/post-coupon" routerLinkActive="active">Post Coupon</button>
-<button mat-button routerLink="/agency/coupons" routerLinkActive="active">Coupons</button>
+<!-- <button mat-button routerLink="/agency/post-coupon" routerLinkActive="active">Post Coupon</button> -->
+<!-- <button mat-button routerLink="/agency/coupons" routerLinkActive="active">Coupons</button> -->
 <button mat-button routerLinkActive="active" (click)="logout()">Logout</button>
 </mat-toolbar>
 </div>

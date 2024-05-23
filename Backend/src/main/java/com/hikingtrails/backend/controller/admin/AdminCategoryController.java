@@ -30,3 +30,4 @@ public class AdminCategoryController {
         return ResponseEntity.ok(categoryService.getAllCategories());
     }
 }
+
