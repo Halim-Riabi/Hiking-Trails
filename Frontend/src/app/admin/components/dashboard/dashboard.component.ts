@@ -172,10 +172,11 @@ export class DashboardComponent {
   }
   
 
-  openMapDialog(): void {
+  openMapDialog(startLat: number, startLng: number, endLat: number, endLng: number): void {
     const dialogRef = this.dialog.open(MapDialogComponent, {
       width: '600px',
-      height: '450px'
+      height: '450px',
+      data: { startLat, startLng, endLat, endLng }
     });
 
     dialogRef.afterClosed().subscribe(result => {
