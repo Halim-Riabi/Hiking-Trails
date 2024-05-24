@@ -55,26 +55,26 @@
 
         <mat-form-field appearance="outline" class="form-field">
             <mat-label>Start Latitude</mat-label>
-            <input matInput type="text" placeholder="Start Latitude" formControlName="slatitude">
-            <mat-error *ngIf="trailForm.get('slatitude')?.hasError('required')">This Input is Required!</mat-error>
+            <input matInput type="number" placeholder="Start Latitude" formControlName="startLat">
+            <mat-error *ngIf="trailForm.get('startLat')?.hasError('required')">This Input is Required!</mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="form-field">
             <mat-label>Start Longitude</mat-label>
-            <input matInput type="text" placeholder="Start Longitude" formControlName="slongitude">
-            <mat-error *ngIf="trailForm.get('slongitude')?.hasError('required')">This Input is Required!</mat-error>
+            <input matInput type="number" placeholder="Start Longitude" formControlName="startLng">
+            <mat-error *ngIf="trailForm.get('startLng')?.hasError('required')">This Input is Required!</mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="form-field">
             <mat-label>End Latitude</mat-label>
-            <input matInput type="text" placeholder="End Latitude" formControlName="elatitude">
-            <mat-error *ngIf="trailForm.get('elatitude')?.hasError('required')">This Input is Required!</mat-error>
+            <input matInput type="number" placeholder="End Latitude" formControlName="endLat">
+            <mat-error *ngIf="trailForm.get('endLat')?.hasError('required')">This Input is Required!</mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="form-field">
             <mat-label>End Longitude</mat-label>
-            <input matInput type="text" placeholder="End Longitude" formControlName="elongitude">
-            <mat-error *ngIf="trailForm.get('elongitude')?.hasError('required')">This Input is Required!</mat-error>
+            <input matInput type="number" placeholder="End Longitude" formControlName="endLng">
+            <mat-error *ngIf="trailForm.get('endLng')?.hasError('required')">This Input is Required!</mat-error>
         </mat-form-field>
 
 

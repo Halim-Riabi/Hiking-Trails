@@ -17,10 +17,10 @@ public class Trail {
     private Long id;
     private String name;
     private Long price;
-    private String startLat;
-    private String startLng;
-    private String endLat;
-    private String endLng;
+    private double startLat;
+    private double startLng;
+    private double endLat;
+    private double endLng;
     @Lob
     private String description;
     @Lob
