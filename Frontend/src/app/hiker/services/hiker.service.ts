@@ -88,6 +88,12 @@ export class HikerService {
     })
   }
 
+  giveReview(reviewDto:any): Observable<any>{
+    return this.http.post(BASIC_URL + `api/hiker/review`, reviewDto ,{
+      headers: this.createAuthorizationHeader(),
+    })
+  }
+
   private createAuthorizationHeader(): HttpHeaders{
     return new HttpHeaders().set(
       'Authorization', 'Bearer ' + UserStorageService.getToken()
