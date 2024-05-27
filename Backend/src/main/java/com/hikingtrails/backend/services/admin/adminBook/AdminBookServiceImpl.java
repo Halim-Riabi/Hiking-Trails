@@ -7,6 +7,7 @@ import com.hikingtrails.backend.repository.BookRepository;
 import com.hikingtrails.backend.services.email.EmailService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -45,6 +46,7 @@ public class AdminBookServiceImpl implements AdminBookService{
         }
         return null;
     }
+
 
     private void sendStatusChangeEmail(Book book, String status) {
         String reecipientEmail = book.getUser().getEmail();
