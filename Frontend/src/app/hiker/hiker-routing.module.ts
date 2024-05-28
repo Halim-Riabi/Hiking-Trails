@@ -6,6 +6,7 @@ import { DemandComponent } from './components/demand/demand.component';
 import { MyBookingsComponent } from './components/my-bookings/my-bookings.component';
 import { ViewBookedTrailsComponent } from './components/view-booked-trails/view-booked-trails.component';
 import { ReviewBookedTrailComponent } from './components/review-booked-trail/review-booked-trail.component';
+import { ViewTrailDetailComponent } from './components/view-trail-detail/view-trail-detail.component';
 
 const routes: Routes = [
   { path: '', component: HikerComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'my_bookings', component: MyBookingsComponent },
   { path: 'booked_trails/:bookId', component: ViewBookedTrailsComponent },
   { path: 'review/:trailId', component: ReviewBookedTrailComponent },
+  { path: 'trail/:trailId', component: ViewTrailDetailComponent },
 ];
 
 @NgModule({

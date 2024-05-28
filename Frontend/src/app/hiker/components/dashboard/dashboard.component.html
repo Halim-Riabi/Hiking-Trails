@@ -14,8 +14,8 @@
         <div class="trail-image">
             <img [src]="trail.processedImg" alt="trail-image">
         </div>
-        <div class="trail-details">
-            <h2 class="trail-name">{{ trail.name }}</h2>
+        <div class="trail-details" >
+            <h2 class="trail-name" routerLink="/hiker/trail/{{trail.id}}">{{ trail.name }}</h2>
             <p class="trail-description">{{ trail.description }}</p>
             <mat-divider></mat-divider>
             <div class="trail-info">
@@ -30,8 +30,12 @@
             </div>
             <mat-divider></mat-divider>
             <div class="actions">
+                <div class="coordinates-button" ><button  color=""  (click)="openMapDialog(trail.startLat, trail.startLng, trail.endLat, trail.endLng)">
+                    <mat-icon>place</mat-icon>
+                </button></div>
+
                 <button color="primary" class="update-button" (click)="addToDemand(trail.id)">
-                    Add to my list
+                    Add to my list <mat-icon matSuffix>bookmark_border</mat-icon>
                 </button>
             </div>
         </div>

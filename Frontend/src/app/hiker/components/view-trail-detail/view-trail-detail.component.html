@@ -1,0 +1,34 @@
+<div class="center-container" *ngIf="trail">
+    <div class="trail-card">
+        <div class="trail-image">
+            <img [src]="trail.processedImg" alt="{{ trail.name }} Image">
+        </div>
+        <div class="trail-details">
+            <h2>{{ trail.name }}</h2>
+            <p class="description"> {{ trail.description }}</p>
+            <p class="price">Price: ${{ trail.price }}</p>
+            <p class="category">difficulty level: {{ trail.categoryName }}</p>
+        </div>
+
+    </div>
+
+</div>
+
+<h1 class="section-heading" *ngIf="reviews.length > 0">Hiker Reviews</h1>
+<div class="review-list" *ngIf="reviews">
+    <div class="center-container">
+        <div *ngFor="let review of reviews" class="review-card">
+            <div class="review-image">
+                <img [src]="review.processedImg" *ngIf="review.processedImg" alt="{{ review.description }} Image" class="small-image">
+            </div>
+            <div class="review details">
+                <h2>{{ review.description }}</h2>
+                <div class="details-row">
+                    <p class="rating">Rating: {{ review.rating }}/5</p>
+                    <p class="username">______User name: {{ review.username }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

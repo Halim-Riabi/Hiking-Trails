@@ -13,6 +13,8 @@ import { MyBookingsComponent } from './components/my-bookings/my-bookings.compon
 import { ViewBookedTrailsComponent } from './components/view-booked-trails/view-booked-trails.component';
 import { ReviewBookedTrailComponent } from './components/review-booked-trail/review-booked-trail.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ViewTrailDetailComponent } from './components/view-trail-detail/view-trail-detail.component';
+import { MapDialogComponent } from '../admin/components/map-dialog/map-dialog.component';
 // import { NgxPaginationModule } from 'ngx-pagination/lib/ngx-pagination.module';
 
 
@@ -24,7 +26,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     PlaceBookComponent,
     MyBookingsComponent,
     ViewBookedTrailsComponent,
-    ReviewBookedTrailComponent
+    ReviewBookedTrailComponent,
+    ViewTrailDetailComponent,
+    MapDialogComponent
   ],
   imports: [
     CommonModule,

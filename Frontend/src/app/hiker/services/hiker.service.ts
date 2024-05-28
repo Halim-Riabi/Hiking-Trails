@@ -94,6 +94,12 @@ export class HikerService {
     })
   }
 
+  getTrailDetailById(trailId: number) :Observable<any>{
+    return this.http.get(BASIC_URL + `api/hiker/trail/${trailId}`, {
+      headers: this.createAuthorizationHeader(),
+    })
+  }
+
   private createAuthorizationHeader(): HttpHeaders{
     return new HttpHeaders().set(
       'Authorization', 'Bearer ' + UserStorageService.getToken()

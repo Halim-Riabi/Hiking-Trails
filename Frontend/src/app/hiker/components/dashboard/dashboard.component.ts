@@ -5,6 +5,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { AdminService } from 'src/app/admin/service/admin.service';
 import { HikerService } from '../../services/hiker.service';
 import { Router } from '@angular/router';
+import { MapDialogComponent } from 'src/app/admin/components/map-dialog/map-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dashboard',
@@ -22,7 +24,8 @@ export class DashboardComponent implements OnInit {
   constructor(private hikerService: HikerService,
               private fb: FormBuilder,
               private router: Router,
-              private snackbar: MatSnackBar) {}
+              private snackbar: MatSnackBar,
+              private dialog: MatDialog) {}
 
   ngOnInit(){
     this.getAllTrails();
@@ -67,4 +70,18 @@ export class DashboardComponent implements OnInit {
     this.page = page;
     this.getAllTrails(); // or implement a similar method to fetch paginated data
   }
+
+  
+  openMapDialog(startLat: number, startLng: number, endLat: number, endLng: number): void {
+    const dialogRef = this.dialog.open(MapDialogComponent, {
+      width: '600px',
+      height: '450px',
+      data: { startLat, startLng, endLat, endLng }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
 }
