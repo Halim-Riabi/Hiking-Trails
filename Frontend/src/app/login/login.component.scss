@@ -3,6 +3,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    
 }
 
 mat-card {
@@ -13,12 +14,15 @@ mat-card {
     @media screen and (max-width: 500px) {
         max-width: 90%;
     }
+    background-color: #f8f8f8;
+    border-color: black;
 }
 
 mat-card-title {
     text-align: center;
     font-size: 24px;
     margin-bottom: 20px;
+    
 }
 
 form {
