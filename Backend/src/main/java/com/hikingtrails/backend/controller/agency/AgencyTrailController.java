@@ -1,5 +1,6 @@
 package com.hikingtrails.backend.controller.agency;
 
+import com.hikingtrails.backend.dto.AgencyTrailDto;
 import com.hikingtrails.backend.dto.TrailDto;
 import com.hikingtrails.backend.services.admin.admintrail.AdminTrailService;
 import lombok.RequiredArgsConstructor;
@@ -20,9 +21,9 @@ public class AgencyTrailController {
     private final AdminTrailService adminTrailService;
     /*Down here add Trail API*/
     @PostMapping("/trail")
-    public ResponseEntity<TrailDto> addTrail(@ModelAttribute TrailDto trailDto) throws IOException {
-        TrailDto trailDto1 = adminTrailService.addTrail(trailDto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(trailDto1);
+    public ResponseEntity<AgencyTrailDto> addTrail(@ModelAttribute  AgencyTrailDto  agencytrailDto) throws IOException {
+        TrailDto agencytrailDto1 = adminTrailService.addTrail(agencytrailDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(agencytrailDto1);
     }
 
     @GetMapping("/trails")
