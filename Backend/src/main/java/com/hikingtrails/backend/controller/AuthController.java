@@ -18,9 +18,7 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -73,5 +71,20 @@ public class AuthController {
 
         UserDto userDto = authService.createUser(signupRequest);
         return new ResponseEntity<>(userDto, HttpStatus.OK);
+    }
+
+
+    @PutMapping("/api/hiker/{userId}/email")
+    public ResponseEntity<UserDto> updateEmail(@PathVariable Long userId, @RequestParam String newEmail) {
+        UserDto updatedUser = authService.updateUserEmail(userId, newEmail);
+        return ResponseEntity.ok(updatedUser);
+    }
+
+    @PutMapping("/api/hiker/{userId}/password")
+    public ResponseEntity<Void> updatePassword(@PathVariable Long userId,
+                                               @RequestParam String oldPassword,
+                                               @RequestParam String newPassword) {
+        authService.updateUserPassword(userId, oldPassword, newPassword);
+        return ResponseEntity.ok().build();
     }
 }

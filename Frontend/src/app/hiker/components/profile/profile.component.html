@@ -1,0 +1,36 @@
+<div class="profile-container">
+    <form [formGroup]="profileForm" (ngSubmit)="updateEmail()">
+      <label for="email">Email:</label>
+      <input id="email" formControlName="email" type="email" placeholder="Enter your new email">
+      <div *ngIf="profileForm.get('email').invalid && profileForm.get('email').touched">
+        <!-- <small *ngIf="profileForm.get('email').errors['required']">Email is required.</small> -->
+        <small *ngIf="profileForm.get('email').errors['email']">Invalid email format.</small>
+      </div>
+      <button type="submit" [disabled]="profileForm.get('email').invalid">Update Email</button>
+    </form>
+  
+    <form [formGroup]="profileForm" (ngSubmit)="updatePassword()">
+      <label for="oldPassword">Old Password:</label>
+      <input id="oldPassword" formControlName="oldPassword" type="password" placeholder="Enter your old password">
+      <div *ngIf="profileForm.get('oldPassword').invalid && profileForm.get('oldPassword').touched">
+        <small *ngIf="profileForm.get('oldPassword').errors['required']">Old password is required.</small>
+      </div>
+  
+      <label for="newPassword">New Password:</label>
+      <input id="newPassword" formControlName="newPassword" type="password" placeholder="Enter your new password">
+      <div *ngIf="profileForm.get('newPassword').invalid && profileForm.get('newPassword').touched">
+        <small *ngIf="profileForm.get('newPassword').errors['required']">New password is required.</small>
+        <small *ngIf="profileForm.get('newPassword').errors['minlength']">Password must be at least 6 characters.</small>
+      </div>
+  
+      <label for="confirmPassword">Confirm New Password:</label>
+      <input id="confirmPassword" formControlName="confirmPassword" type="password" placeholder="Confirm your new password">
+      <div *ngIf="profileForm.get('confirmPassword').invalid && profileForm.get('confirmPassword').touched">
+        <small *ngIf="profileForm.get('confirmPassword').errors['required']">Confirmation password is required.</small>
+        <small *ngIf="profileForm.hasError('passwordsMismatch')">Passwords do not match.</small>
+      </div>
+  
+      <button type="submit" [disabled]="profileForm.invalid">Update Password</button>
+    </form>
+  </div>
+  

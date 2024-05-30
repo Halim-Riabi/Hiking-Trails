@@ -9,6 +9,7 @@ import com.hikingtrails.backend.enums.UserRole;
 import com.hikingtrails.backend.repository.BookRepository;
 import com.hikingtrails.backend.repository.UserRepository;
 import jakarta.annotation.PostConstruct;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -49,7 +50,7 @@ public class AuthServiceImpl implements AuthService{
         //when we will creating a new user one demand list will be automatically created for that particular user with the status of pending
         bookRepository.save(book);
 
-        UserDto userDto = new UserDto();
+        UserDto userDto = new UserDto(user);
         userDto.setId(createdUser.getId());
 
         return userDto;
@@ -87,4 +88,24 @@ public class AuthServiceImpl implements AuthService{
 
 
     }*/
+
+    @Transactional
+    public UserDto updateUserEmail(Long userId, String newEmail) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        user.setEmail(newEmail);
+        user = userRepository.save(user);
+        return new UserDto(user);
+    }
+
+    @Transactional
+    public void updateUserPassword(Long userId, String oldPassword, String newPassword) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        if (!bCryptPasswordEncoder.matches(oldPassword, user.getPassword())) {
+            throw new RuntimeException("Old password is incorrect");
+        }
+        user.setPassword(bCryptPasswordEncoder.encode(newPassword));
+        userRepository.save(user);
+    }
 }
