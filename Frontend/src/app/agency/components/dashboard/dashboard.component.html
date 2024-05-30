@@ -31,9 +31,12 @@
             </div>
             <mat-divider></mat-divider>
             <div class="actions">
+                <!-- <button mat-raised-button color="primary" class="update-button"
+                        [routerLink]="'/agency/faq/' + trail.id">FAQ</button> -->
+                        <div class="coordinates-button" ><button  color=""  (click)="openAgencyMapDialog(trail.startLat, trail.startLng, trail.endLat, trail.endLng)">
+                            <mat-icon>place</mat-icon>
+                        </button></div>
                 <button mat-raised-button color="primary" class="update-button"
-                        [routerLink]="'/agency/faq/' + trail.id">FAQ</button>
-                <button mat-raised-button color="accent" class="update-button"
                         [routerLink]="'/agency/trail/' + trail.id">Update</button>
                 <button mat-raised-button color="warn" class="delete-button" (click)="deleteTrail(trail.id)">
                     Delete

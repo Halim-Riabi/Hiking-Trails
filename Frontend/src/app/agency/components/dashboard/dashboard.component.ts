@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DeleteConfirmationDialogComponent } from 'src/app/admin/components/delete-confirmation-dialog/delete-confirmation-dialog.component';
 import { AgencyService } from '../../services/agency.service';
+import { AgencyMapDialogComponent } from './agency-map-dialog/agency-map-dialog.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -82,6 +83,19 @@ export class DashboardComponent {
       }
     );
   }
+
+  openAgencyMapDialog(startLat: number, startLng: number, endLat: number, endLng: number): void {
+    const dialogRef = this.dialog.open(AgencyMapDialogComponent, {
+      width: '600px',
+      height: '450px',
+      data: { startLat, startLng, endLat, endLng }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+
+}
 
 
 }

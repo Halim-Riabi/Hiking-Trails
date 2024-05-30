@@ -14,7 +14,8 @@ import { ViewBookedTrailsComponent } from './components/view-booked-trails/view-
 import { ReviewBookedTrailComponent } from './components/review-booked-trail/review-booked-trail.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ViewTrailDetailComponent } from './components/view-trail-detail/view-trail-detail.component';
-import { MapDialogComponent } from '../admin/components/map-dialog/map-dialog.component';
+
+import { HikerMapDialogComponent } from './components/hiker-map-dialog/hiker-map-dialog.component';
 // import { NgxPaginationModule } from 'ngx-pagination/lib/ngx-pagination.module';
 
 
@@ -28,7 +29,7 @@ import { MapDialogComponent } from '../admin/components/map-dialog/map-dialog.co
     ViewBookedTrailsComponent,
     ReviewBookedTrailComponent,
     ViewTrailDetailComponent,
-    MapDialogComponent
+    HikerMapDialogComponent
   ],
   imports: [
     CommonModule,

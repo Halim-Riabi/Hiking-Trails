@@ -5,8 +5,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { AdminService } from 'src/app/admin/service/admin.service';
 import { HikerService } from '../../services/hiker.service';
 import { Router } from '@angular/router';
-import { MapDialogComponent } from 'src/app/admin/components/map-dialog/map-dialog.component';
+// import { MapDialogComponent } from 'src/app/admin/components/map-dialog/map-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { HikerMapDialogComponent } from '../hiker-map-dialog/hiker-map-dialog.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -72,8 +73,8 @@ export class DashboardComponent implements OnInit {
   }
 
   
-  openMapDialog(startLat: number, startLng: number, endLat: number, endLng: number): void {
-    const dialogRef = this.dialog.open(MapDialogComponent, {
+  openHikerMapDialog(startLat: number, startLng: number, endLat: number, endLng: number): void {
+    const dialogRef = this.dialog.open(HikerMapDialogComponent, {
       width: '600px',
       height: '450px',
       data: { startLat, startLng, endLat, endLng }

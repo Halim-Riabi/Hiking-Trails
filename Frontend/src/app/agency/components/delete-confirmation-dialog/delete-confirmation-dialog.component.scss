@@ -1,0 +1,63 @@
+
+
+:host {
+    display: block;
+  }
+  
+  .mat-dialog-container {
+    background: linear-gradient(to bottom, #ffffff, #f0f0f0);
+    border-radius: 8px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .mat-dialog-content {
+    padding: 20px;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .mat-dialog-actions {
+    justify-content: flex-end;
+    padding: 10px 20px;
+  }
+  
+  .no {
+    margin-left: 10px;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .no:hover {
+    background-color: #dc3545;
+    color: #ffffff;
+  }
+  
+  .yes {
+    margin-left: 10px;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .yes:hover {
+    background-color: #28a745;
+    color: #ffffff;
+  }
+  
+  h2 {
+    margin: 0;
+    padding: 20px 20px 0;
+    font-size: 24px;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+  }
+  

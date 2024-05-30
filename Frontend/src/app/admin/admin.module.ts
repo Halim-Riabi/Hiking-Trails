@@ -25,6 +25,7 @@ import { MapDialogComponent } from './components/map-dialog/map-dialog.component
     BookingsComponent,
     UpdateTrailComponent,
     MapDialogComponent
+    
   ],
   imports: [
     CommonModule,
