@@ -1,6 +1,5 @@
 package com.hikingtrails.backend.services.agency.category;
 
-import com.hikingtrails.backend.dto.CategoryDto;
 import com.hikingtrails.backend.entity.Category;
 import com.hikingtrails.backend.repository.CategoryRepository;
 import lombok.RequiredArgsConstructor;
@@ -10,7 +9,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class CategoryServiceImpl implements CategoryService {
+public class CategoryServiceImpl2 implements CategoryService {
 
     private final CategoryRepository categoryRepository;
 

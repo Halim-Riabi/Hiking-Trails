@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { AgencyService } from '../../services/agency.service';
 
 @Component({
   selector: 'app-post-trail',
@@ -6,5 +10,85 @@ import { Component } from '@angular/core';
   styleUrls: ['./post-trail.component.scss']
 })
 export class PostTrailComponent {
+
+  trailForm: FormGroup;
+  listOfCategories: any = [];
+  selectedFile: File | null;
+  imagePreview: string | ArrayBuffer | null;
+
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private snackBar: MatSnackBar,
+    private agencyService: AgencyService,
+    ){}
+
+    onFileSelected(event: any){
+      this.selectedFile = event.target.files[0];
+      this.previewImage();
+    }
+    // adjusting the size of the image preview should be done
+    previewImage(){
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.imagePreview = reader.result;
+      }
+      reader.readAsDataURL(this.selectedFile);
+    }
+
+    ngOnInit(): void{
+      this.trailForm = this.fb.group({
+        categoryId: [null, [Validators.required]],
+        name: [null, [Validators.required]],
+        price: [null, [Validators.required]],
+        description: [null, [Validators.required]],
+        startLat: [null, [Validators.required]],
+        startLng: [null, [Validators.required]],
+        endLat: [null, [Validators.required]],
+        endLng: [null, [Validators.required]],
+      });
+
+      this.getAllCategories();
+      
+    }
+
+    getAllCategories(){
+      this.agencyService.getAllCategories().subscribe(res=>{
+        this.listOfCategories = res;
+      })
+    }
+
+    addTrail(): void {
+      if(this.trailForm.valid){
+        const formData: FormData = new FormData();
+        formData.append('img', this.selectedFile);
+        formData.append('categoryId', this.trailForm.get('categoryId').value);
+        formData.append('name', this.trailForm.get('name').value);
+        formData.append('description', this.trailForm.get('description').value);
+        formData.append('price', this.trailForm.get('price').value);
+        formData.append('startLat', this.trailForm.get('startLat').value);
+        formData.append('startLng', this.trailForm.get('startLng').value);
+        formData.append('endLat', this.trailForm.get('endLat').value);
+        formData.append('endLng', this.trailForm.get('endLng').value);
+
+        this.agencyService.addTrail(formData).subscribe((res) =>{
+          if (res.id != null){
+            this.snackBar.open('Trail Posted Successfully!', 'Close', {
+              duration: 5000
+            });
+            this.router.navigateByUrl('/admin/dashboard');
+          }else {
+            this.snackBar.open(res.message, 'ERROR', {
+              duration: 5000
+            });
+          }
+        })
+      }else{
+        for(const i in this.trailForm.controls){
+          this.trailForm.controls[i].markAsDirty();
+          this.trailForm.controls[i].updateValueAndValidity();
+        }
+      }
+    }
 
 }
