@@ -28,7 +28,7 @@ public class WebSecurityConfiguration {
                 .disable()
                 .authorizeHttpRequests()
                 /*change the order below with book or something else */
-                .requestMatchers("/authenticate", "/sign-up", "/api/visitor/**", "/send-email")
+                .requestMatchers("/authenticate", "/sign-up", "/api/visitor/**", "/send-email","http://localhost:8085/api/hiker/{userId}/email","http://localhost:8085/api/hiker/48/password")
                 .permitAll()
                 .and()
                 .authorizeHttpRequests()

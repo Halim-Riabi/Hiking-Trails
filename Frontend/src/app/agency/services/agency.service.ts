@@ -78,6 +78,12 @@ export class AgencyService {
     })
   }
 
+  updatePassword(userId: String, oldPassword: string, newPassword: string): Observable<any> {
+    return this.http.put(BASIC_URL+`api/agency/${userId}/password`, { userId, oldPassword, newPassword }, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
 
 
 

@@ -5,25 +5,25 @@
         <mat-card-content>
             <form [formGroup]="signupForm">
 
-                <div mat-form-field appearance="outline" class="form-field">
+                <!-- <div mat-form-field appearance="outline" class="form-field">
                     <label for="role">Role</label>
                     <select class="form-control" id="role" formControlName="role" name="role" required>
                       <option value="" disabled selected>Select Role</option>
                       <option value="HIKER">Hiker</option>
                       <option value="AGENCY">Agency</option>
                     </select>
-                  </div>
-                  <!-- <div mat-form-field appearance="outline" class="form-field">
+                  </div> -->
+                  <mat-form-field appearance="outline" class="form-field">
                     <mat-label>Role</mat-label>
-                    <mat-select formControlName="role" required>
-                      <option value="" disabled selected>Select Role</option>
-                      <option value="HIKER">Hiker</option>
-                      <option value="AGENCY">Agency</option>
+                    <mat-select formControlName="role" placeholder="Select Role">
+                        <mat-option value="HIKER">Hiker</mat-option>
+                        <mat-option value="AGENCY">Agency</mat-option>
                     </mat-select>
                     <mat-error *ngIf="signupForm.get('role').invalid && signupForm.get('role').touched">
-                      Please select a role.
+                        Please select a role.
                     </mat-error>
-                  </div> -->
+                </mat-form-field>
+                  
                 <mat-form-field appearance="outline">
                     <mat-label>Name</mat-label>
                     <input matInput formControlName="name" placeholder="Name" required>

@@ -89,7 +89,7 @@ public class AuthServiceImpl implements AuthService{
 
     }*/
 
-    @Transactional
+    /*@Transactional*/
     public UserDto updateUserEmail(Long userId, String newEmail) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
@@ -98,7 +98,7 @@ public class AuthServiceImpl implements AuthService{
         return new UserDto(user);
     }
 
-    @Transactional
+   /* @Transactional*/
     public void updateUserPassword(Long userId, String oldPassword, String newPassword) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));

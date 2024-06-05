@@ -23,18 +23,18 @@ export class HikerService {
   //     headers: this.createAuthorizationHeader(),
   //   });
   // }
-  updateEmail(userId: String, email: string): Observable<any> {
-    return this.http.put(`${BASIC_URL}api/hiker/${userId}/email`, { email }, {
-      headers: this.createAuthorizationHeader(),
-    });
-  }
+  // updateEmail(userId: String, email: string): Observable<any> {
+    // return this.http.put(`${BASIC_URL}api/hiker/${userId}/email`, { email }, {
+      // headers: this.createAuthorizationHeader(),
+    // });
+  // }
 
   updatePassword(userId: String, oldPassword: string, newPassword: string): Observable<any> {
-    return this.http.put(`${BASIC_URL}api/hiker/${userId}/password`, { oldPassword, newPassword }, {
+    return this.http.put(BASIC_URL+`api/hiker/${userId}/password`, { userId, oldPassword, newPassword }, {
       headers: this.createAuthorizationHeader(),
     });
   }
-
+  // return this.http.put(BASIC_URL + `api/admin/trail/${trailId}`, trailDto,{
   // updateTrail(trailId:any, trailDto:any): Observable<any>{
   //   return this.http.put(BASIC_URL + `api/agency/trail/${trailId}`, trailDto,{
   //     headers: this.createAuthorizationHeader(),

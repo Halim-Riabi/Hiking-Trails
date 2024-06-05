@@ -21,6 +21,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -82,9 +83,20 @@ public class AuthController {
 
     @PutMapping("/api/hiker/{userId}/password")
     public ResponseEntity<Void> updatePassword(@PathVariable Long userId,
-                                               @RequestParam String oldPassword,
-                                               @RequestParam String newPassword) {
+                                               @RequestBody Map<String, String> passwordMap) {
+        String oldPassword = passwordMap.get("oldPassword");
+        String newPassword = passwordMap.get("newPassword");
         authService.updateUserPassword(userId, oldPassword, newPassword);
         return ResponseEntity.ok().build();
     }
+
+    @PutMapping("/api/agency/{userId}/password")
+    public ResponseEntity<Void> updatePasswordagency(@PathVariable Long userId,
+                                               @RequestBody Map<String, String> passwordMap) {
+        String oldPassword = passwordMap.get("oldPassword");
+        String newPassword = passwordMap.get("newPassword");
+        authService.updateUserPassword(userId, oldPassword, newPassword);
+        return ResponseEntity.ok().build();
+    }
+
 }

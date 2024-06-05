@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { HikerService } from '../../services/hiker.service';
+// import { HikerService } from '../../services/hiker.service';
 import { UserStorageService } from 'src/app/services/storage/user-storage.service';
+import { AgencyService } from '../../services/agency.service';
 
 @Component({
   selector: 'app-profile',
@@ -15,7 +16,7 @@ export class ProfileComponent {
 
   constructor(
     private fb: FormBuilder,
-    private hikerService: HikerService,
+    private agencyService: AgencyService,
     private userStorageService: UserStorageService
   ) {
     this.profileForm = this.fb.group({
@@ -46,7 +47,7 @@ export class ProfileComponent {
     const userId = UserStorageService.getUserId();
 
     if (oldPassword && newPassword && userId) {
-      this.hikerService.updatePassword(userId, oldPassword, newPassword).subscribe(
+      this.agencyService.updatePassword(userId, oldPassword, newPassword).subscribe(
         response => {
           this.successMessage = 'Password updated successfully';
           console.log('Password updated successfully', response);
